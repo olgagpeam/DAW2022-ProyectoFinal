@@ -2,7 +2,7 @@
  *  
  */
 
-package datos;
+package model;
 
 import java.io.*;
 //import java.sql.Time;
@@ -14,26 +14,26 @@ import java.util.Date;
  */
 public class ApptConsult implements Serializable {
     private String r_user, r_owner, r_pet, address, note;
-    private Date date_appt, in_hour;
+    private Date dateAppt, inHour;
     private char r_sector;
     
     private int r_consult;
-    private String addr, diagnosis, procedures, med;
+    private String addrRef, diagnosis, procedures, med;
 
     public ApptConsult() {
     }
 
-    public ApptConsult(String r_user, String r_owner, String r_pet, String address, String note, Date date_appt, char r_sector, Date in_hour, int r_consult, String addr, String diagnosis, String procedures, String med) {
+    public ApptConsult(String r_user, String r_owner, String r_pet, String address, String note, Date dateAppt, char r_sector, Date inHour, int r_consult, String addrRef, String diagnosis, String procedures, String med) {
         this.r_user = r_user;
         this.r_owner = r_owner;
         this.r_pet = r_pet;
         this.address = address;
         this.note = note;
-        this.date_appt = date_appt;
+        this.dateAppt = dateAppt;
         this.r_sector = r_sector;
-        this.in_hour = in_hour;
+        this.inHour = inHour;
         this.r_consult = r_consult;
-        this.addr = addr;
+        this.addrRef = addrRef;
         this.diagnosis = diagnosis;
         this.procedures = procedures;
         this.med = med;
@@ -60,7 +60,7 @@ public class ApptConsult implements Serializable {
     }
 
     public Date getDate_appt() {
-        return date_appt;
+        return dateAppt;
     }
 
     public char getR_sector() {
@@ -68,7 +68,7 @@ public class ApptConsult implements Serializable {
     }
 
     public Date getIn_hour() {
-        return in_hour;
+        return inHour;
     }
 
     public int getR_consult() {
@@ -76,7 +76,7 @@ public class ApptConsult implements Serializable {
     }
 
     public String getAddr() {
-        return addr;
+        return addrRef;
     }
 
     public String getDiagnosis() {
@@ -111,24 +111,24 @@ public class ApptConsult implements Serializable {
         this.note = note;
     }
 
-    public void setDate_appt(Date date_appt) {
-        this.date_appt = date_appt;
+    public void setDate_appt(Date dateAppt) {
+        this.dateAppt = dateAppt;
     }
 
     public void setR_sector(char r_sector) {
         this.r_sector = r_sector;
     }
 
-    public void setIn_hour(Date in_hour) {
-        this.in_hour = in_hour;
+    public void setIn_hour(Date inHour) {
+        this.inHour = inHour;
     }
 
     public void setR_consult(int r_consult) {
         this.r_consult = r_consult;
     }
 
-    public void setAddr(String addr) {
-        this.addr = addr;
+    public void setAddr(String addrRef) {
+        this.addrRef = addrRef;
     }
 
     public void setDiagnosis(String diagnosis) {
