@@ -4,13 +4,11 @@
 
 package model;
 
-import java.io.*;
-
 /**
  *
  * @author Alarcon Olga
  */
-public class Account implements Serializable {
+public class Account {
     private String id, typeAcct;
 
     public Account() {

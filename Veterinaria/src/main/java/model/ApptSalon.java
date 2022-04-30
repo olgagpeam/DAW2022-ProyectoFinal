@@ -4,38 +4,44 @@
 
 package model;
 
-import java.io.*;
-//import java.sql.Time;
-import java.util.Date;
+import java.sql.*;
 
 /**
  *
  * @author Alarcon Olga
  */
-public class ApptSalon implements Serializable {
-    private String r_user, r_owner, r_pet, address, note;
-    private Date dateAppt, inHour;
+public class ApptSalon {
+    private int id;
+    private String r_user, r_owner, r_pet, address;
+    private Date dateAppt;
+    private Time inHour;
     private char r_sector;
+    private String note;
     
     private int r_service;
-    private Date outHour;
+    private Time outHour;
     private String products;
 
     public ApptSalon() {
     }
 
-    public ApptSalon(String r_user, String r_owner, String r_pet, String address, String note, Date dateAppt, Date inHour, char r_sector, int r_service, Date outHour, String products) {
+    public ApptSalon(int id, String r_user, String r_owner, String r_pet, String address, Date dateAppt, Time inHour, char r_sector, String note, int r_service, Time outHour, String products) {
+        this.id = id;
         this.r_user = r_user;
         this.r_owner = r_owner;
         this.r_pet = r_pet;
         this.address = address;
-        this.note = note;
         this.dateAppt = dateAppt;
         this.inHour = inHour;
         this.r_sector = r_sector;
+        this.note = note;
         this.r_service = r_service;
         this.outHour = outHour;
         this.products = products;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getR_user() {
@@ -54,15 +60,11 @@ public class ApptSalon implements Serializable {
         return address;
     }
 
-    public String getNote() {
-        return note;
-    }
-
-    public Date getDate_appt() {
+    public Date getDateAppt() {
         return dateAppt;
     }
 
-    public Date getIn_hour() {
+    public Time getInHour() {
         return inHour;
     }
 
@@ -70,16 +72,24 @@ public class ApptSalon implements Serializable {
         return r_sector;
     }
 
+    public String getNote() {
+        return note;
+    }
+
     public int getR_service() {
         return r_service;
     }
 
-    public Date getOut_hour() {
+    public Time getOutHour() {
         return outHour;
     }
 
     public String getProducts() {
         return products;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setR_user(String r_user) {
@@ -98,15 +108,11 @@ public class ApptSalon implements Serializable {
         this.address = address;
     }
 
-    public void setNote(String note) {
-        this.note = note;
-    }
-
-    public void setDate_appt(Date dateAppt) {
+    public void setDateAppt(Date dateAppt) {
         this.dateAppt = dateAppt;
     }
 
-    public void setIn_hour(Date inHour) {
+    public void setInHour(Time inHour) {
         this.inHour = inHour;
     }
 
@@ -114,18 +120,20 @@ public class ApptSalon implements Serializable {
         this.r_sector = r_sector;
     }
 
+    public void setNote(String note) {
+        this.note = note;
+    }
+
     public void setR_service(int r_service) {
         this.r_service = r_service;
     }
 
-    public void setOut_hour(Date outHour) {
+    public void setOutHour(Time outHour) {
         this.outHour = outHour;
     }
 
     public void setProducts(String products) {
         this.products = products;
     }
-    
-    
     
 }

@@ -4,22 +4,21 @@
 
 package model;
 
-import java.io.*;
-import java.util.*;
+import java.sql.Timestamp;
 
 /**
  *
  * @author Alarcon Olga
  */
-public class MedUpdate implements Serializable {
+public class MedUpdate {
     private int r_id;
-    private Date updatedAt;
+    private Timestamp updatedAt;
     private String r_user, updates;
 
     public MedUpdate() {
     }
 
-    public MedUpdate(int r_id, Date updatedAt, String r_user, String updates) {
+    public MedUpdate(int r_id, Timestamp updatedAt, String r_user, String updates) {
         this.r_id = r_id;
         this.updatedAt = updatedAt;
         this.r_user = r_user;
@@ -30,7 +29,7 @@ public class MedUpdate implements Serializable {
         return r_id;
     }
 
-    public Date getUpdated_at() {
+    public Timestamp getUpdated_at() {
         return updatedAt;
     }
 
@@ -46,7 +45,7 @@ public class MedUpdate implements Serializable {
         this.r_id = r_id;
     }
 
-    public void setUpdated_at(Date updatedAt) {
+    public void setUpdated_at(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 

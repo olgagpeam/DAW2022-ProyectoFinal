@@ -4,37 +4,42 @@
 
 package model;
 
-import java.io.*;
-import java.sql.Time;
-import java.util.*;
+import java.sql.*;
 
 /**
  *
  * @author Alarcon Olga
  */
-public class ApptHospital implements Serializable{
-    private String r_user, r_owner, r_pet, address, note;
+public class ApptHospital {
+    private int id;
+    private String r_user, r_owner, r_pet, address;
     private Date dateAppt;
-    private char r_sector;
     private Time inHour;
+    private char r_sector;
+    private String note;
     
     private String illness, procedures, medicaments;
 
     public ApptHospital() {
     }
 
-    public ApptHospital(String r_user, String r_owner, String r_pet, String address, String note, Date dateAppt, char r_sector, Time inHour, String illness, String procedures, String medicaments) {
+    public ApptHospital(int id, String r_user, String r_owner, String r_pet, String address, Date dateAppt, Time inHour, char r_sector, String note, String illness, String procedures, String medicaments) {
+        this.id = id;
         this.r_user = r_user;
         this.r_owner = r_owner;
         this.r_pet = r_pet;
         this.address = address;
-        this.note = note;
         this.dateAppt = dateAppt;
-        this.r_sector = r_sector;
         this.inHour = inHour;
+        this.r_sector = r_sector;
+        this.note = note;
         this.illness = illness;
         this.procedures = procedures;
         this.medicaments = medicaments;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getR_user() {
@@ -53,20 +58,20 @@ public class ApptHospital implements Serializable{
         return address;
     }
 
-    public String getNote() {
-        return note;
+    public Date getDateAppt() {
+        return dateAppt;
     }
 
-    public Date getDate_appt() {
-        return dateAppt;
+    public Time getInHour() {
+        return inHour;
     }
 
     public char getR_sector() {
         return r_sector;
     }
 
-    public Time getIn_hour() {
-        return inHour;
+    public String getNote() {
+        return note;
     }
 
     public String getIllness() {
@@ -79,6 +84,10 @@ public class ApptHospital implements Serializable{
 
     public String getMedicaments() {
         return medicaments;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setR_user(String r_user) {
@@ -97,20 +106,20 @@ public class ApptHospital implements Serializable{
         this.address = address;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setDateAppt(Date dateAppt) {
+        this.dateAppt = dateAppt;
     }
 
-    public void setDate_appt(Date dateAppt) {
-        this.dateAppt = dateAppt;
+    public void setInHour(Time inHour) {
+        this.inHour = inHour;
     }
 
     public void setR_sector(char r_sector) {
         this.r_sector = r_sector;
     }
 
-    public void setIn_hour(Time inHour) {
-        this.inHour = inHour;
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public void setIllness(String illness) {
@@ -124,6 +133,5 @@ public class ApptHospital implements Serializable{
     public void setMedicaments(String medicaments) {
         this.medicaments = medicaments;
     }
-    
     
 }

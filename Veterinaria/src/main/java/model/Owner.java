@@ -12,21 +12,22 @@ import java.util.*;
  *
  * @author Alarcon Olga
  */
-public class Owner implements Serializable {
-    private String ine, name, addr, cel, tel, email;
+public class Owner {
+    private String ine, name;
     private Date bdate;
+    private String addr, cel, tel, email;
 
     public Owner() {
     }
 
-    public Owner(String ine, String name, String addr, String cel, String tel, String email, Date bdate) {
+    public Owner(String ine, String name, Date bdate, String addr, String cel, String tel, String email) {
         this.ine = ine;
         this.name = name;
+        this.bdate = bdate;
         this.addr = addr;
         this.cel = cel;
         this.tel = tel;
         this.email = email;
-        this.bdate = bdate;
     }
 
     public String getIne() {
@@ -35,6 +36,10 @@ public class Owner implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public Date getBdate() {
+        return bdate;
     }
 
     public String getAddr() {
@@ -53,16 +58,16 @@ public class Owner implements Serializable {
         return email;
     }
 
-    public Date getBdate() {
-        return bdate;
-    }
-
     public void setIne(String ine) {
         this.ine = ine;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setBdate(Date bdate) {
+        this.bdate = bdate;
     }
 
     public void setAddr(String addr) {
@@ -80,10 +85,5 @@ public class Owner implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public void setBdate(Date bdate) {
-        this.bdate = bdate;
-    }
-    
     
 }

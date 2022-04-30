@@ -4,22 +4,21 @@
 
 package model;
 
-import java.io.*;
-import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  *
  * @author Alarcon Olga
  */
 
-public class ProdUpdate implements Serializable{
+public class ProdUpdate {
     private String r_prod, r_user;
-    private Date updatedAt;
+    private Timestamp updatedAt;
     
     public ProdUpdate() {
     }
     
-    public ProdUpdate(String r_prod, String r_user, Date updatedAt) {
+    public ProdUpdate(String r_prod, String r_user, Timestamp updatedAt) {
         this.r_prod = r_prod;
         this.r_user = r_user;
         this.updatedAt = updatedAt;
@@ -33,7 +32,7 @@ public class ProdUpdate implements Serializable{
         return r_user;
     }
 
-    public Date getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
@@ -45,7 +44,7 @@ public class ProdUpdate implements Serializable{
         this.r_user = r_user;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 

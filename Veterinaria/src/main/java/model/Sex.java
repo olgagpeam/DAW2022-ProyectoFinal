@@ -4,13 +4,11 @@
 
 package model;
 
-import java.io.*;
-
 /**
  *
  * @author Alarcon Olga
  */
-public class Sex implements Serializable {
+public class Sex {
     private char id;
     private String sex;
 
