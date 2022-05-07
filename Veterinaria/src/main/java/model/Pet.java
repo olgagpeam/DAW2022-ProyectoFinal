@@ -4,14 +4,15 @@
 
 package model;
 
-import java.util.*;
+import java.sql.*;
 
 /**
  *
  * @author Alarcon Olga
  */
 public class Pet {
-    private String id, name;
+    private int id;
+    private String name;
     private Date bdate;
     private String specie, race;
     private char r_sex;
@@ -20,7 +21,7 @@ public class Pet {
     public Pet() {
     }
 
-    public Pet(String id, String name, Date bdate, String specie, String race, char r_sex, String color, String r_owner, String other) {
+    public Pet(int id, String name, Date bdate, String specie, String race, char r_sex, String color, String r_owner, String other) {
         this.id = id;
         this.name = name;
         this.bdate = bdate;
@@ -32,11 +33,11 @@ public class Pet {
         this.other = other;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

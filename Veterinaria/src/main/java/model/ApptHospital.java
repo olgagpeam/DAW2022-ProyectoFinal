@@ -12,7 +12,9 @@ import java.sql.*;
  */
 public class ApptHospital {
     private int id;
-    private String r_user, r_owner, r_pet, address;
+    private String r_user, r_owner;
+    private int r_pet;
+    private String addr;
     private Date dateAppt;
     private Time inHour;
     private char r_sector;
@@ -23,12 +25,12 @@ public class ApptHospital {
     public ApptHospital() {
     }
 
-    public ApptHospital(int id, String r_user, String r_owner, String r_pet, String address, Date dateAppt, Time inHour, char r_sector, String note, String illness, String procedures, String medicaments) {
+    public ApptHospital(int id, String r_user, String r_owner, int r_pet, String addr, Date dateAppt, Time inHour, char r_sector, String note, String illness, String procedures, String medicaments) {
         this.id = id;
         this.r_user = r_user;
         this.r_owner = r_owner;
         this.r_pet = r_pet;
-        this.address = address;
+        this.addr = addr;
         this.dateAppt = dateAppt;
         this.inHour = inHour;
         this.r_sector = r_sector;
@@ -50,12 +52,12 @@ public class ApptHospital {
         return r_owner;
     }
 
-    public String getR_pet() {
+    public int getR_pet() {
         return r_pet;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAddr() {
+        return addr;
     }
 
     public Date getDateAppt() {
@@ -98,12 +100,12 @@ public class ApptHospital {
         this.r_owner = r_owner;
     }
 
-    public void setR_pet(String r_pet) {
+    public void setR_pet(int r_pet) {
         this.r_pet = r_pet;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddr(String addr) {
+        this.addr = addr;
     }
 
     public void setDateAppt(Date dateAppt) {

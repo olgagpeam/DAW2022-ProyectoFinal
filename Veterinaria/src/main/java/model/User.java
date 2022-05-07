@@ -4,25 +4,26 @@
 
 package model;
 
-import java.io.*;
-import java.util.*;
+import java.sql.*;
 
 /**
  *
  * @author Alarcon Olga
  */
 public class User {
-    private String id, pwd, nam;
+    private String id, pwd, name, lname1, lname2;
     private Date bdate;
     private String addr, tel, cel, email, r_acct;
     
     public User() {
     }
 
-    public User(String id, String pwd, String nam, Date bdate, String addr, String tel, String cel, String email, String r_acct) {
+    public User(String id, String pwd, String name, String lname1, String lname2, Date bdate, String addr, String tel, String cel, String email, String r_acct) {
         this.id = id;
         this.pwd = pwd;
-        this.nam = nam;
+        this.name = name;
+        this.lname1 = lname1;
+        this.lname2 = lname2;
         this.bdate = bdate;
         this.addr = addr;
         this.tel = tel;
@@ -47,14 +48,30 @@ public class User {
         this.pwd = pwd;
     }
 
-    public String getNam() {
-        return nam;
+    public String getName() {
+        return name;
     }
 
-    public void setNam(String nam) {
-        this.nam = nam;
+    public void setName(String name) {
+        this.name = name;
     }
 
+    public String getLname1() {
+        return lname1;
+    }
+
+    public void setLname1(String lname1) {
+        this.lname1 = lname1;
+    }
+    
+    public String getLname2() {
+        return lname2;
+    }
+
+    public void setLname2(String lname2) {
+        this.lname2 = lname2;
+    }
+    
     public Date getBdate() {
         return bdate;
     }

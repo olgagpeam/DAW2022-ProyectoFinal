@@ -4,10 +4,11 @@ create type full_name as (
 	lname1 text,
 	lname2 text
 );
-create type pet_id as (
-	owner_ine char(4),
-	pet_name text
-);
+
+--create type pet_id as (
+--	owner_ine char(4),
+--	pet_name text
+--);
 
 --Catalogos
 create table account(
@@ -73,7 +74,7 @@ create table owners (
 );
 
 create table pets (
-	id_pet pet_id not null unique,
+	id_pet serial,
 	name_pet text,
 	bdate_pet date,
 	specie varchar(50),
@@ -91,7 +92,7 @@ create table appointments (
 	id_appt serial,
 	r_user varchar(20),
 	r_owner varchar(20),
-	r_pet pet_id,
+	r_pet int,
 	address text,
 	date_appt date,
 	in_hour time,
@@ -128,10 +129,12 @@ create table appts_salon (
 ) inherits (appointments);
 
 create table med_updates (
+	id_medu serial,
 	r_id int,
 	med_updated_at timestamp,
 	r_user_med varchar(20),
 	updates text,
+	constraint pk_med_updates primary key (id_medu),
 	foreign key (r_id) references appointments (id_appt),
 	foreign	key (r_user_med) references users (id_user)
 );
@@ -153,9 +156,11 @@ create table products (
 );
 
 create table prod_updates (
+	id_produ serial,
 	r_prod varchar(15),
 	prod_updated_at timestamp,
 	r_user_prod varchar(20),
+	constraint pk_prod_updates primary key (id_produ),
 	foreign key (r_prod) references products (id_product),
 	foreign key(r_user_prod) references users (id_user)
 );

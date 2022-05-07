@@ -116,7 +116,7 @@ public class Product {
         this.updatedAt = updatedAt;
     }
 
-    public boolean isIsActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 

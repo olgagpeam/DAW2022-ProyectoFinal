@@ -11,20 +11,25 @@ import java.sql.Timestamp;
  * @author Alarcon Olga
  */
 public class MedUpdate {
-    private int r_id;
+    private int id, r_id;
     private Timestamp updatedAt;
     private String r_user, updates;
 
     public MedUpdate() {
     }
 
-    public MedUpdate(int r_id, Timestamp updatedAt, String r_user, String updates) {
+    public MedUpdate(int id, int r_id, Timestamp updatedAt, String r_user, String updates) {
+        this.id = id;
         this.r_id = r_id;
         this.updatedAt = updatedAt;
         this.r_user = r_user;
         this.updates = updates;
     }
 
+    public int getId() {
+        return id;
+    }
+    
     public int getR_id() {
         return r_id;
     }
@@ -39,6 +44,10 @@ public class MedUpdate {
 
     public String getUpdates() {
         return updates;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setR_id(int r_id) {

@@ -1,7 +1,6 @@
 /*
  *  
  */
-
 package model;
 
 import java.sql.Timestamp;
@@ -10,18 +9,29 @@ import java.sql.Timestamp;
  *
  * @author Alarcon Olga
  */
-
 public class ProdUpdate {
-    private String r_prod, r_user;
+
+    int id;
+    private String r_prod;
     private Timestamp updatedAt;
-    
+    private String r_user;
+
     public ProdUpdate() {
     }
-    
-    public ProdUpdate(String r_prod, String r_user, Timestamp updatedAt) {
+
+    public ProdUpdate(int id, String r_prod, Timestamp updatedAt, String r_user) {
+        this.id = id;
         this.r_prod = r_prod;
-        this.r_user = r_user;
         this.updatedAt = updatedAt;
+        this.r_user = r_user;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getR_prod() {
@@ -48,7 +58,4 @@ public class ProdUpdate {
         this.updatedAt = updatedAt;
     }
 
-    
-    
-    
 }
