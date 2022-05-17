@@ -21,8 +21,21 @@ public class Pet {
     public Pet() {
     }
 
+    //Insert
     public Pet(int id, String name, Date bdate, String specie, String race, char r_sex, String color, String r_owner, String other) {
         this.id = id;
+        this.name = name;
+        this.bdate = bdate;
+        this.specie = specie;
+        this.race = race;
+        this.r_sex = r_sex;
+        this.color = color;
+        this.r_owner = r_owner;
+        this.other = other;
+    }
+    
+    //Update
+    public Pet (String name, Date bdate, String specie, String race, char r_sex, String color, String r_owner, String other) {
         this.name = name;
         this.bdate = bdate;
         this.specie = specie;

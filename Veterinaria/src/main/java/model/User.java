@@ -17,7 +17,8 @@ public class User {
     
     public User() {
     }
-
+    
+    //Insert
     public User(String id, String pwd, String name, String lname1, String lname2, Date bdate, String addr, String tel, String cel, String email, String r_acct) {
         this.id = id;
         this.pwd = pwd;
@@ -31,7 +32,23 @@ public class User {
         this.email = email;
         this.r_acct = r_acct;
     }
-
+    //Update
+    public User(String name, String lname1, String lname2, Date bdate, String addr, String tel, String cel, String email, String r_acct) {
+        this.name = name;
+        this.lname1 = lname1;
+        this.lname2 = lname2;
+        this.bdate = bdate;
+        this.addr = addr;
+        this.tel = tel;
+        this.cel = cel;
+        this.email = email;
+        this.r_acct = r_acct;
+    }
+    //ChangePassword
+    public User(String pwd) {
+        this.pwd = pwd;
+    }
+    
     public String getId() {
         return id;
     }

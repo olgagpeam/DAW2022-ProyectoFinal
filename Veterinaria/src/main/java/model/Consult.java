@@ -20,6 +20,10 @@ public class Consult{
         this.typeConsult = typeConsult;
     }
 
+    public Consult(String typeConsult) {
+        this.typeConsult = typeConsult;
+    }
+    
     public int getId() {
         return id;
     }

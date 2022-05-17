@@ -43,6 +43,22 @@ public class ApptConsult {
         this.procedures = procedures;
         this.med = med;
     }
+    
+    public ApptConsult(String r_user, String r_owner, int r_pet, String addr, Date dateAppt, Time inHour, char r_sector, String note, int r_consult, String addrRef, String diagnosis, String procedures, String med) {
+        this.r_user = r_user;
+        this.r_owner = r_owner;
+        this.r_pet = r_pet;
+        this.addr = addr;
+        this.dateAppt = dateAppt;
+        this.inHour = inHour;
+        this.r_sector = r_sector;
+        this.note = note;
+        this.r_consult = r_consult;
+        this.addrRef = addrRef;
+        this.diagnosis = diagnosis;
+        this.procedures = procedures;
+        this.med = med;
+    }
 
     public int getId() {
         return id;

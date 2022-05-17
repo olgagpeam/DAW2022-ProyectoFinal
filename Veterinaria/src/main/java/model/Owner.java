@@ -20,8 +20,19 @@ public class Owner {
     public Owner() {
     }
 
+    //Insert
     public Owner(String ine, String name, Date bdate, String addr, String cel, String tel, String email) {
         this.ine = ine;
+        this.name = name;
+        this.bdate = bdate;
+        this.addr = addr;
+        this.cel = cel;
+        this.tel = tel;
+        this.email = email;
+    }
+    
+    //Update
+    public Owner(String name, Date bdate, String addr, String cel, String tel, String email) {
         this.name = name;
         this.bdate = bdate;
         this.addr = addr;

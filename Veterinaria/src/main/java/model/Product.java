@@ -35,6 +35,22 @@ public class Product {
         this.updatedAt = updatedAt;
         this.isActive = isActive;
     }
+    
+    public Product(String name, String description, int inStock, int minStock, float priceIn, float priceOut, int r_category, Timestamp updatedAt, boolean isActive) {
+        this.name = name;
+        this.description = description;
+        this.inStock = inStock;
+        this.minStock = minStock;
+        this.priceIn = priceIn;
+        this.priceOut = priceOut;
+        this.r_category = r_category;
+        this.updatedAt = updatedAt;
+        this.isActive = isActive;
+    }
+    
+    public Product(boolean isActive) {
+        this.isActive = isActive;
+    }
 
     public String getId() {
         return id;

@@ -36,9 +36,9 @@ public class AccountDAO {
 
             while (rs.next()) {
                 String id = rs.getString(1);
-                String type_acct = rs.getString(2);
+                String typeAcct = rs.getString(2);
 
-                acct = new Account(id, type_acct);
+                acct = new Account(id, typeAcct);
 
                 lista.add(acct);
             }

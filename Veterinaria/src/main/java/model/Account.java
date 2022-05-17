@@ -18,6 +18,10 @@ public class Account {
         this.id = id;
         this.typeAcct = typeAcct;
     }
+    
+    public Account(String typeAcct) {
+        this.typeAcct = typeAcct;
+    }
 
     public String getId() {
         return id;

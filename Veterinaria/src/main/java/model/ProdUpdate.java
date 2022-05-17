@@ -25,6 +25,12 @@ public class ProdUpdate {
         this.updatedAt = updatedAt;
         this.r_user = r_user;
     }
+    
+    public ProdUpdate(String r_prod, Timestamp updatedAt, String r_user) {
+        this.r_prod = r_prod;
+        this.updatedAt = updatedAt;
+        this.r_user = r_user;
+    }
 
     public int getId() {
         return id;

@@ -19,7 +19,11 @@ public class Category {
         this.id = id;
         this.category = category;
     }
-
+    
+    public Category(String category) {
+        this.category = category;
+    }
+    
     public int getId() {
         return id;
     }

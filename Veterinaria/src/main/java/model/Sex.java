@@ -19,6 +19,10 @@ public class Sex {
         this.id = id;
         this.sex = sex;
     }
+    public Sex(String sex) {
+        this.sex = sex;
+    }
+    
 
     public char getId() {
         return id;

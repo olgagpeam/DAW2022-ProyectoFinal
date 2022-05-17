@@ -39,6 +39,20 @@ public class ApptHospital {
         this.procedures = procedures;
         this.medicaments = medicaments;
     }
+    
+    public ApptHospital(String r_user, String r_owner, int r_pet, String addr, Date dateAppt, Time inHour, char r_sector, String note, String illness, String procedures, String medicaments) {
+        this.r_user = r_user;
+        this.r_owner = r_owner;
+        this.r_pet = r_pet;
+        this.addr = addr;
+        this.dateAppt = dateAppt;
+        this.inHour = inHour;
+        this.r_sector = r_sector;
+        this.note = note;
+        this.illness = illness;
+        this.procedures = procedures;
+        this.medicaments = medicaments;
+    }
 
     public int getId() {
         return id;

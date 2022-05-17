@@ -25,6 +25,13 @@ public class MedUpdate {
         this.r_user = r_user;
         this.updates = updates;
     }
+    
+    public MedUpdate( int r_id, Timestamp updatedAt, String r_user, String updates) {
+        this.r_id = r_id;
+        this.updatedAt = updatedAt;
+        this.r_user = r_user;
+        this.updates = updates;
+    }
 
     public int getId() {
         return id;

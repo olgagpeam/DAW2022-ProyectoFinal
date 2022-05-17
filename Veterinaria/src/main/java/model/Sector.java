@@ -20,7 +20,11 @@ public class Sector {
         this.id = id;
         this.sector = sector;
     }
-
+    
+    public Sector(String sector) {
+        this.sector = sector;
+    }
+    
     public char getId() {
         return id;
     }
