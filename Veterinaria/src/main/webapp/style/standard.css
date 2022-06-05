@@ -18,110 +18,146 @@ body {
 }
 
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 25%;
-  max-width: 200px;
-  background-color: #f1f1f1;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    max-width: 200px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+.dropdown-btn {
+    width: 100%;
+    max-width: 200px;
+    display: block;
+    color: #0f4c75;
+    padding: 8px 16px;
+    text-decoration: none;
+    text-align: left;
+    border: none;
+    font-size: 100%;
 }
 
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.dropdown-btn.active{
+    background-color: #0f4c75;
+    color: white;
+}
+
+.dropdown-container {
+  display: none;
+  background-color: #DEF0FB;
+  padding-left: 8px;
+}
 li a {
-  display: block;
-  color: #000;
-  padding: 8px 16px;
-  text-decoration: none;
+    display: block;
+    color: #0f4c75;
+    padding: 8px 16px;
+    text-decoration: none;
 }
 
 li a.active {
-  background-color: #04AA6D;
-  color: white;
+    background-color: #0f4c75;
+    color: white;
 }
 
 li a:hover:not(.active) {
-  background-color: #555;
-  color: white;
+    background-color: #0f4c75;
+    color: white;
 }
-#right {
-    max-width: 180px;
-    width: 100%;
-    padding: 50px 30px;
-    background-color: #3282b8;
 
-    -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-    -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-    box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+.top {
+    font-size: 250%;
+    color:#bbe1fa;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+#right{
+    margin: 0;
+    margin-left: 25%;
+    padding: 20px;
+}
+
+#login {
+    margin-left: 25%;
+    height: auto;
+    min-width: 100px;
+    max-width: 400px;
+    padding: 20px 30px;
+    background-color: #0f4c75;
+}
+
+#login input {
+    font-family: 'Overpass', sans-serif;
+    font-size: 110%;
+    color: #1b262c;
+
+    display: block;
+    width: 100%;
+    height: 40px;
+
+    margin-bottom: 10px;
+    padding: 5px 5px 5px 10px;
+
+    box-sizing: border-box;
+
+    border: none;
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+}
+
+#login input::placeholder {
+    font-family: 'Overpass', sans-serif;
+    color: #E4E4E4;
+}
+
+#login button {
+    font-family: 'Overpass', sans-serif;
+    font-size: 110%;
+    color:#1b262c;
+    width: 100%;
+    height: 40px;
+    border: none;
 
     border-radius: 3px 3px 3px 3px;
     -moz-border-radius: 3px 3px 3px 3px;
     -webkit-border-radius: 3px 3px 3px 3px;
 
-    box-sizing: border-box;
-}
-.opt-cont {
-    display: flex;
-    align-items: baseline;
-    margin-bottom: 20px;
-}
-.option {
-    font-size: 120%;
-    color:#0f4c75;
-    text-align: left;
-    margin-right: 10px;
-}
-.option a {
-    text-decoration: none;
-    color: #bbe1fa;
-}
-
-.option a:hover {
-    color: #1b262c;
-}
-
-.add {
-    font-size: 150%;
-    width: 30px;
-    height: 30px;
-    border: none;
-    text-align: center;
-    border-radius: 20px 20px 20px 20px;
-    -moz-border-radius: 20px 20px 20px 20px;
-    -webkit-border-radius: 20px 20px 20px 20px;
-
     background-color: #bbe1fa;
+
+    margin-top: 10px;
 }
 
-.add a {
-    text-decoration: none;
-    color: #0f4c75;
-}
-
-.add:hover {
-    width: 30px;
-    height: 30px;
-    border-radius: 20px 20px 20px 20px;
-    -moz-border-radius: 20px 20px 20px 20px;
-    -webkit-border-radius: 20px 20px 20px 20px;
-    background-color: #0f4c75;
-}
-.add a:hover {
+#login button:hover {
+    background-color: #3282b8;
     color:#bbe1fa;
 }
 
-.back {
-    font-size: 100%;
-    color:#0f4c75;
-    text-align: right;
-    margin-top: 50px;
-}
-.back a {
-    text-decoration: none;
-    color: #bbe1fa;
+table {
+    background-color: #f1f1f1; 
+    margin:0;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
 }
 
-.back a:hover {
-    color: #1b262c;
+th {
+    border-top: 2px solid #0f4c75;
+    border-bottom: 2px solid #0f4c75;
+    padding: 10px;
+    text-align: left;
+}
+td {
+    padding: 5px;
+    border-bottom: 1px solid #0f4c75;
 }

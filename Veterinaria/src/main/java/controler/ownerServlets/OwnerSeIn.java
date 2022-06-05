@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "OwnerSeIn", urlPatterns = {"/OwnerSeIn"})
 
 public class OwnerSeIn extends HttpServlet {
-/*
+
     @Override
     protected void doGet(HttpServletRequest rq, HttpServletResponse rp) throws IOException {
         OwnerDAO dao = new OwnerDAO();
@@ -33,13 +33,13 @@ public class OwnerSeIn extends HttpServlet {
         try {
             ownr = dao.select();
             rq.getSession().setAttribute("owner", ownr);
-            rp.sendRedirect("/Veterinaria/views/OwnerConsulta.jsp");
+            rp.sendRedirect("/Veterinaria/views/ownerSe.jsp");
         } catch (ParseException ex) {
             Logger.getLogger(OwnerSeIn.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-*/
+
     @Override
     protected void doPost(HttpServletRequest rq, HttpServletResponse rp) throws IOException {
         try {
@@ -60,7 +60,7 @@ public class OwnerSeIn extends HttpServlet {
             out.println("<head>");
             out.println("<script>");
             out.println("alert('Dueño agregado.');");
-            out.println("window.location='/Veterinaria/views/owner.jsp'");
+            out.println("window.location='/Veterinaria/views/ownerIn.jsp'");
             out.println("</script>");
             out.println("</head>");
             out.println("</html>");
