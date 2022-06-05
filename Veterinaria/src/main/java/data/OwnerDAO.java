@@ -18,9 +18,9 @@ public class OwnerDAO {
 //  select    insert    update      delete
 
     public static final String selectSQL = "SELECT * FROM owners";
-    public static final String insertSQL = "INSERT INTO users (ine, name_ownr, bdate_ownr, addr_ownr, cel_ownr, tel_uownr, email_ownr) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    public static final String updateSQL = "UPDATE users SET name_ownr = ?, bdate_ownr = ? addr_ownr = ?, cel_ownr = ?, tel_uownr = ?, email_ownr = ? WHERE ine = ?";
-    public static final String deleteSQL = "DELETE FROM users WHERE id_usr = ? ";
+    public static final String insertSQL = "INSERT INTO owners (ine, name_ownr, bdate_ownr, addr_ownr, cel_ownr, tel_ownr, email_ownr) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    public static final String updateSQL = "UPDATE owners SET name_ownr = ?, bdate_ownr = ? addr_ownr = ?, cel_ownr = ?, tel_ownr = ?, email_ownr = ? WHERE ine = ?";
+    public static final String deleteSQL = "DELETE FROM owners WHERE id_usr = ? ";
     SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
     
     public ArrayList<Owner> select() throws ParseException {

@@ -6,6 +6,7 @@ package controler.ownerServlets;
 import data.OwnerDAO;
 import model.Owner;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "OwnerSeIn", urlPatterns = {"/OwnerSeIn"})
 
 public class OwnerSeIn extends HttpServlet {
-
+/*
     @Override
     protected void doGet(HttpServletRequest rq, HttpServletResponse rp) throws IOException {
         OwnerDAO dao = new OwnerDAO();
@@ -38,7 +39,7 @@ public class OwnerSeIn extends HttpServlet {
         }
 
     }
-
+*/
     @Override
     protected void doPost(HttpServletRequest rq, HttpServletResponse rp) throws IOException {
         try {
@@ -54,6 +55,15 @@ public class OwnerSeIn extends HttpServlet {
             OwnerDAO dao = new OwnerDAO();
             Owner ownr = new Owner(ine, name, bdate, addr, tel, cel, email);
             dao.insert(ownr);
+            PrintWriter out = rp.getWriter();
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<script>");
+            out.println("alert('Dueño agregado.');");
+            out.println("window.location='/Veterinaria/views/owner.jsp'");
+            out.println("</script>");
+            out.println("</head>");
+            out.println("</html>");
         } catch (ParseException ex) {
             Logger.getLogger(OwnerSeIn.class.getName()).log(Level.SEVERE, null, ex);
         }
