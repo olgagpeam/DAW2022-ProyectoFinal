@@ -41,8 +41,8 @@ ul {
 }
 
 .fa-caret-down {
-  float: right;
-  padding-right: 8px;
+    float: right;
+    padding-right: 8px;
 }
 
 .dropdown-btn.active{
@@ -51,9 +51,9 @@ ul {
 }
 
 .dropdown-container {
-  display: none;
-  background-color: #def0fb;
-  padding-left: 8px;
+    display: none;
+    background-color: #def0fb;
+    padding-left: 8px;
 }
 li a {
     display: block;
@@ -79,13 +79,54 @@ li a:hover:not(.active) {
     margin-bottom: 20px;
 }
 
+p {
+    color: #def0fb; 
+    font-size: 125%;
+}
+
+.word {
+    display: inline;
+    font-size: 120%;
+    color: #def0fb;
+    margin-right: 10px;
+}
+
+select {
+    color: #0f4c75; 
+    font-size: 120%;
+    font-family: 'Overpass', sans-serif;
+    height: 40px;
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+}
+
+option {
+    color: #0f4c75; 
+    font-size: 100%;
+    font-family: 'Overpass', sans-serif;
+    width: 100%;
+    height: 40px;
+    border: none;
+
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+
+    background-color: #bbe1fa;
+
+    margin-top: 10px;
+}
+
 #right{
     margin: 0;
     margin-left: 25%;
     padding: 20px;
 }
 
-#login {
+#form {
     margin-left: 25%;
     height: auto;
     min-width: 100px;
@@ -94,7 +135,7 @@ li a:hover:not(.active) {
     background-color: #0f4c75;
 }
 
-#login input {
+#form input {
     font-family: 'Overpass', sans-serif;
     font-size: 110%;
     color: #1b262c;
@@ -104,6 +145,7 @@ li a:hover:not(.active) {
     height: 40px;
 
     margin-bottom: 10px;
+    margin-top: 10px;
     padding: 5px 5px 5px 10px;
 
     box-sizing: border-box;
@@ -114,12 +156,12 @@ li a:hover:not(.active) {
     -webkit-border-radius: 3px 3px 3px 3px;
 }
 
-#login input::placeholder {
+#form input::placeholder {
     font-family: 'Overpass', sans-serif;
-    color: #E4E4E4;
+    color: #D0D0D0;
 }
 
-#login button {
+#form button {
     font-family: 'Overpass', sans-serif;
     font-size: 110%;
     color:#1b262c;
@@ -136,7 +178,7 @@ li a:hover:not(.active) {
     margin-top: 10px;
 }
 
-#login button:hover {
+#form button:hover {
     background-color: #3282b8;
     color:#bbe1fa;
 }

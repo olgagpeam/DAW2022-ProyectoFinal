@@ -86,7 +86,7 @@
                     </tbody>
                 </table>
                 <%} else {%>
-                <p style="color: #def0fb; font-size: 125%">No hay información para mostrar
+                <p>No hay información para mostrar
                 <%}%>
             </div>
         </div>

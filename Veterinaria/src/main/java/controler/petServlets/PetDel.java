@@ -4,8 +4,13 @@
 
 package controler.petServlets;
 
+import controler.ownerServlets.OwnerDel;
 import data.PetDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +28,35 @@ public class PetDel extends HttpServlet{
         int id = Integer.parseInt(rq.getParameter("id"));
 
         PetDAO dao = new PetDAO();
-        dao.delete(id);
+       
+        PrintWriter out = rp.getWriter();
+        try {
+            if (dao.delete(id) == 0) {
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<script>");
+                out.println("alert('Mascota eliminada con éxito.');");
+                out.println("window.location='/Veterinaria/views/petDel.jsp'");
+                out.println("</script>");
+                out.println("</head>");
+                out.println("</html>");
+            } else {
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<script>");
+                if (dao.delete(id) == 1) {
+                    out.println("alert('El ID ingresado no existe');");
+                }
+                if (dao.delete(id) == 2) {
+                    out.println("alert('Error al eliminar Mascota!');");
+                }
+                out.println("window.location='/Veterinaria/views/petDel.jsp'");
+                out.println("</script>");
+                out.println("</head>");
+                out.println("</html>");
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(OwnerDel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

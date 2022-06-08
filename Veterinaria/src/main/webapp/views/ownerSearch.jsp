@@ -6,7 +6,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.io.*, java.util.*" %>
 <%@ page import="javax.servlet.*, java.text.*" %>
-<%@ page import="model.Owner" %>
 <!--DOCTYPE html-->
 <html>
     <head>
@@ -48,7 +47,7 @@
                     <li><a href="/Veterinaria/views/apptInH.jsp">Internar</a></li>
                 </ul>
             </div>
-            <div id="login">
+            <div id="form">
                 <div class="top">
                     Editar información dueño
                 </div>

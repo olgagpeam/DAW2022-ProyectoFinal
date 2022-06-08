@@ -30,7 +30,7 @@ public class OwnerDel extends HttpServlet {
 
         PrintWriter out = rp.getWriter();
         try {
-            if (dao.delete(ine)) {
+            if (dao.delete(ine) == 0) {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<script>");
@@ -43,7 +43,12 @@ public class OwnerDel extends HttpServlet {
                 out.println("<html>");
                 out.println("<head>");
                 out.println("<script>");
-                out.println("alert('Error al eliminar dueño!/ INE equivocado');");
+                if (dao.delete(ine) == 1) {
+                    out.println("alert('El INE ingresado no existe');");
+                }
+                if (dao.delete(ine) == 2) {
+                    out.println("alert('Error al eliminar dueño!');");
+                }
                 out.println("window.location='/Veterinaria/views/ownerDel.jsp'");
                 out.println("</script>");
                 out.println("</head>");

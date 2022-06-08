@@ -26,7 +26,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class OwnerUp extends HttpServlet {
 
-    SimpleDateFormat dfUp = new SimpleDateFormat("yyyy-MM-dd");
     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
@@ -108,7 +107,6 @@ public class OwnerUp extends HttpServlet {
                 out.println("</head>");
                 out.println("</html>");
             }
-            rp.sendRedirect("/Veterinaria/views/ownerUp.jsp");
         } catch (ParseException ex) {
             Logger.getLogger(OwnerUp.class.getName()).log(Level.SEVERE, null, ex);
         }

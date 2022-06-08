@@ -20,7 +20,7 @@ public class OwnerDAO {
     public static final String insertSQL = "INSERT INTO owners (ine, name_ownr, bdate_ownr, addr_ownr, cel_ownr, tel_ownr, email_ownr) VALUES (?, ?, ?, ?, ?, ?, ?)";
     public static final String updateSQL = "UPDATE owners SET name_ownr = ?, bdate_ownr = ?, addr_ownr = ?, cel_ownr = ?, tel_ownr = ?, email_ownr = ? WHERE ine = ?";
     public static final String deleteSQL = "DELETE FROM owners WHERE ine = ? ";
-    SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
     public ArrayList<Owner> select() throws ParseException {
         Connection conn = null;
@@ -110,13 +110,16 @@ public class OwnerDAO {
         return false;
     }
 
-    public boolean delete(String ine) throws ParseException {
+    public int delete(String ine) throws ParseException {
+        //regresa 0 si se realizo la operacion con exito
+        //regresa 1 si no se encuentra el id a eliminar
+        //regresa 2 si es otro error
         Connection conn = null;
         PreparedStatement st = null;
         try {
             ArrayList<Owner> owner = select();
             for (Owner search : owner) {
-                if (search.equals(ine)) {
+                if (search.getIne().equals(ine)) {
                     conn = DBConnection.getConnection();
                     st = conn.prepareStatement(deleteSQL);
                     st.setString(1, ine);
@@ -124,14 +127,14 @@ public class OwnerDAO {
                     st.executeUpdate();
 
                     DBConnection.close(st, conn);
-                    return true;
+                    return 0;
                 } else {
-                    return false;
+                    return 1;
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return 2;
     }
 }

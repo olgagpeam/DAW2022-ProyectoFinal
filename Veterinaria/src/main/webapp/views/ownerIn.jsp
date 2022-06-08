@@ -25,31 +25,43 @@
         <div id="container">
             <div id="left">
                 <ul>
-                    <button class="dropdown-btn">Dueños
-                        <i class="fa fa-caret-down"></i>
-                    </button>
+                    <button class="dropdown-btn">Dueños<i class="fa fa-caret-down"></i></button>
                     <div class="dropdown-container">
                         <li><a href="/Veterinaria/OwnerSeIn">Listado</a></li>
                         <li><a href="/Veterinaria/views/ownerIn.jsp" class="active">Agregar</a></li>
                         <li><a href="/Veterinaria/views/ownerUp.jsp">Editar</a></li>
                         <li><a href="/Veterinaria/views/ownerDel.jsp">Eliminar</a></li>
                     </div>
-                    <button class="dropdown-btn">Mascotas
-                        <i class="fa fa-caret-down"></i>
-                    </button>
+                    
+                    <button class="dropdown-btn">Mascotas<i class="fa fa-caret-down"></i></button>
                     <div class="dropdown-container">
                         <li><a href="/Veterinaria/PetSeIn">Listado</a></li>
-                        <li><a href="/Veterinaria/views/petIn.jsp">Agregar</a></li>
+                        <li><a href="/Veterinaria/PetR_Owner">Agregar</a></li>
                         <li><a href="/Veterinaria/views/petUp.jsp">Editar</a></li>
                         <li><a href="/Veterinaria/views/petDel.jsp">Eliminar</a></li>
                     </div>
+                    
                     <li><a href="/Veterinaria/ApptSeIn">Citas</a></li>
                     <li><a href="/Veterinaria/views/apptInS.jsp">Agendar cita salon</a></li>
                     <li><a href="/Veterinaria/views/apptInC.jsp">Agendar consulta</a></li>
                     <li><a href="/Veterinaria/views/apptInH.jsp">Internar</a></li>
+                    
+                    <button class="dropdown-btn">Editar citas<i class="fa fa-caret-down"></i></button>
+                    <div class="dropdown-container">
+                        <li><a href="/Veterinaria/apptUpS.jsp">Cita salon</a></li>
+                        <li><a href="/Veterinaria/views/apptUpC.jsp">Cita consulta</a></li>
+                        <li><a href="/Veterinaria/views/apptUpH.jsp">Ingreso Hospitalario</a></li>
+                    </div>
+                    
+                    <button class="dropdown-btn">Cancelar citas <i class="fa fa-caret-down"></i></button>
+                    <div class="dropdown-container">
+                        <li><a href="/Veterinaria/apptDelS.jsp">Cita salon</a></li>
+                        <li><a href="/Veterinaria/views/apptDelC.jsp">Cita consulta</a></li>
+                        <li><a href="/Veterinaria/views/apptDelH.jsp">Ingreso Hospitalario</a></li>
+                    </div>
                 </ul>
             </div>
-            <div id="login">
+            <div id="form">
                 <div class="top">
                     Registrar responsable
                 </div>
