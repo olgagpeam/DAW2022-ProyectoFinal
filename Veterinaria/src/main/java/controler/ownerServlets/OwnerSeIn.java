@@ -43,10 +43,14 @@ public class OwnerSeIn extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest rq, HttpServletResponse rp) throws IOException {
         try {
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
             String ine = rq.getParameter("ine");
             String name = rq.getParameter("name");
-            Date bdate = new Date(df.parse(rq.getParameter("bdate")).getTime());
+            Date bdate = null;
+            if (!rq.getParameter("bdate").equals("")){
+               bdate = new Date(df.parse(rq.getParameter("bdate")).getTime());
+            }
             String addr = rq.getParameter("addr");
             String tel = rq.getParameter("cel");
             String cel = rq.getParameter("tel");
@@ -54,16 +58,27 @@ public class OwnerSeIn extends HttpServlet {
 
             OwnerDAO dao = new OwnerDAO();
             Owner ownr = new Owner(ine, name, bdate, addr, tel, cel, email);
-            dao.insert(ownr);
+
             PrintWriter out = rp.getWriter();
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<script>");
-            out.println("alert('Dueño agregado.');");
-            out.println("window.location='/Veterinaria/views/ownerIn.jsp'");
-            out.println("</script>");
-            out.println("</head>");
-            out.println("</html>");
+            if (dao.insert(ownr)) {
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<script>");
+                out.println("alert('Dueño agregado con éxito.');");
+                out.println("window.location='/Veterinaria/views/ownerIn.jsp'");
+                out.println("</script>");
+                out.println("</head>");
+                out.println("</html>");
+            } else {
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<script>");
+                out.println("alert('Error al agregar dueño!.');");
+                out.println("window.location='/Veterinaria/views/ownerIn.jsp'");
+                out.println("</script>");
+                out.println("</head>");
+                out.println("</html>");
+            }
         } catch (ParseException ex) {
             Logger.getLogger(OwnerSeIn.class.getName()).log(Level.SEVERE, null, ex);
         }

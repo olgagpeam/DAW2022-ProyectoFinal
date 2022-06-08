@@ -58,10 +58,10 @@
                     <input type="text" name="name" placeholder="Nombre" required>
                     <input type="date" name="bdate">
                     <input type="text" name="addr" placeholder="Domicilio">
-                    <input type="text" name="cel" placeholder="Celular" required>
-                    <input type="text" name="tel" placeholder="Teléfono fijo">
+                    <input type="text" name="cel" placeholder="Celular">
+                    <input type="text" name="tel" placeholder="Teléfono">
                     <input type="email" name="email" placeholder="Correo Electronico">
-                    <button type="submit" name="login" title="ingresar">Agregar</button>
+                    <button type="submit" name="add" title="ingresar">Agregar</button>
                 </form>
             </div>
         </div>

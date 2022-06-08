@@ -1,17 +1,16 @@
 <%-- 
-    Document   : ownerSe
-    Created on : Jun 4, 2022, 7:57:11 PM
+    Document   : ownerSearch
+    Created on : Jun 6, 2022, 9:35:55 PM
     Author     : olgag
 --%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.io.*, java.util.*" %>
 <%@ page import="javax.servlet.*, java.text.*" %>
 <%@ page import="model.Owner" %>
-
 <!--DOCTYPE html-->
 <html>
     <head>
-        <title>Dueños</title>
+        <title>Editar Dueño</title>
         <meta charset="UTF-8">        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,9 +28,9 @@
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-container">
-                        <li><a href="/Veterinaria/OwnerSeIn" class="active">Listado</a></li>
+                        <li><a href="/Veterinaria/OwnerSeIn">Listado</a></li>
                         <li><a href="/Veterinaria/views/ownerIn.jsp">Agregar</a></li>
-                        <li><a href="/Veterinaria/views/ownerUp.jsp">Editar</a></li>
+                        <li><a href="/Veterinaria/views/ownerUp.jsp" class="active">Editar</a></li>
                         <li><a href="/Veterinaria/views/ownerDel.jsp">Eliminar</a></li>
                     </div>
                     <button class="dropdown-btn">Mascotas
@@ -49,45 +48,41 @@
                     <li><a href="/Veterinaria/views/apptInH.jsp">Internar</a></li>
                 </ul>
             </div>
-
-            <div id="right">
+            <div id="login">
                 <div class="top">
-                    Listado de dueños
+                    Editar información dueño
                 </div>
                 <%
-                    ArrayList<Owner> owners = (ArrayList<Owner>) session.getAttribute("owner");
-                    if (owners != null && owners.size() > 0) {%>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>INE</th>
-                            <th>Nombre</th>
-                            <th>Fecha de nacimiento</th>
-                            <th>Domicilio</th>
-                            <th>Celular</th>
-                            <th>Telefono</th>
-                            <th>Correo electronico</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%
-                            for (Owner ownr : owners) {
-                                out.print("<tr>"
-                                        + "<td>" + ((ownr.getIne() == null) ? "" : ownr.getIne()) + "</td>"
-                                        + "<td>" + ((ownr.getName() == null) ? "" : ownr.getName()) + "</td>"
-                                        + "<td>" + ((ownr.getBdate() == null) ? "" : ownr.getBdate()) + "</td>"
-                                        + "<td>" + ((ownr.getAddr() == null) ? "" : ownr.getAddr()) + "</td>"
-                                        + "<td>" + ((ownr.getCel() == null) ? "" : ownr.getCel()) + "</td>"
-                                        + "<td>" + ((ownr.getTel() == null) ? "" : ownr.getTel()) + "</td>"
-                                        + "<td>" + ((ownr.getEmail() == null) ? "" : ownr.getEmail()) + "</td>"
-                                        + "</tr>");
-                            }
-                        %>
-                    </tbody>
-                </table>
-                <%} else {%>
-                <p style="color: #def0fb; font-size: 125%">No hay información para mostrar
-                <%}%>
+                    String[] res = (String[]) session.getAttribute("result");
+                %>
+                <form method="post" action="/Veterinaria/OwnerUp">
+                    <input type="text" name="ine" required value="<%=res[6]%>">
+                    <input type="text" name="name" <% if (res[0] == null) {%> placeholder="Nombre">
+                    <%} else {%> value="<%=res[0]%>">
+                    <%}%>
+                    
+                    <input type="date" name="bdate" <% if (res[1] == null) {%>>
+                    <%} else {%> value="<%=res[1]%>">
+                    <%}%>
+
+                    <input type="text" name="addr" <% if (res[2] == null) {%> placeholder="Domicilio">
+                    <%} else {%> value="<%=res[2]%>">
+                    <%}%>
+
+                    <input type="text" name="cel" <% if (res[3] == null) {%> placeholder="Celular">
+                    <%} else {%> value="<%=res[3]%>">
+                    <%}%>
+
+                    <input type="text" name="tel" <% if (res[4] == null) {%> placeholder="Teléfono">
+                    <%} else {%> value="<%=res[4]%>">
+                    <%}%>
+
+                    <input type="email" name="email" <% if (res[5] == null) {%> placeholder="Correo electronico">
+                    <%} else {%> value="<%=res[5]%>">
+                    <%}%>
+
+                    <button type="submit" name="save" title="guardar">Guardar Cambios</button>
+                </form>
             </div>
         </div>
         <script>
