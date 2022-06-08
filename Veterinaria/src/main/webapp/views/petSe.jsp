@@ -24,6 +24,7 @@
         <style type="text/css"></style>
     </head>
     <body>
+        
         <div id="container">
             <div id="left">
                 <ul>
@@ -45,19 +46,19 @@
                         <li><a href="/Veterinaria/views/petUp.jsp">Editar</a></li>
                         <li><a href="/Veterinaria/views/petDel.jsp">Eliminar</a></li>
                     </div>
-                    
+
                     <li><a href="/Veterinaria/ApptSeIn">Citas</a></li>
                     <li><a href="/Veterinaria/views/apptInS.jsp">Agendar cita salon</a></li>
                     <li><a href="/Veterinaria/views/apptInC.jsp">Agendar consulta</a></li>
                     <li><a href="/Veterinaria/views/apptInH.jsp">Internar</a></li>
-                    
+
                     <button class="dropdown-btn">Editar citas<i class="fa fa-caret-down"></i></button>
                     <div class="dropdown-container">
                         <li><a href="/Veterinaria/apptUpS.jsp">Cita salon</a></li>
                         <li><a href="/Veterinaria/views/apptUpC.jsp">Cita consulta</a></li>
                         <li><a href="/Veterinaria/views/apptUpH.jsp">Ingreso Hospitalario</a></li>
                     </div>
-                    
+
                     <button class="dropdown-btn">Cancelar citas <i class="fa fa-caret-down"></i></button>
                     <div class="dropdown-container">
                         <li><a href="/Veterinaria/apptDelS.jsp">Cita salon</a></li>
@@ -119,7 +120,7 @@
             </div>
         </div>
         <script>
-            var dropdown = document.getElementsByClassName("dropdown-btn");
+                    var dropdown = document.getElementsByClassName("dropdown-btn");
             var i;
 
             for (i = 0; i < dropdown.length; i++) {

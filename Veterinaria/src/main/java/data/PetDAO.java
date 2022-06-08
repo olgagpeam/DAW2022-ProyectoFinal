@@ -18,9 +18,9 @@ public class PetDAO {
 
     public static final String selectSQL = "SELECT * FROM pets";
     public static final String insertSQL = "INSERT INTO pets (name_pet, bdate_pet, specie, race, r_sex, color, r_ownr, other_notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    public static final String updateSQL = "UPDATE pets SET name_pet = ?, bdatpet = ?, specie = ?, race = ?, r_sex = ?, color = ?, r_ownr = ?, other_notes = ? WHERE id_pet = ?";
+    public static final String updateSQL = "UPDATE pets SET name_pet = ?, bdate_pet = ?, specie = ?, race = ?, r_sex = ?, color = ?, r_ownr = ?, other_notes = ? WHERE id_pet = ?";
     public static final String deleteSQL = "DELETE FROM pets WHERE id_pet = ? ";
-    SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
     public ArrayList<Pet> select() throws ParseException {
         Connection conn = null;

@@ -92,17 +92,23 @@
 
                     <div class="word">Sexo:</div> 
                     <select name="sex">
-                        <option value="F" <%if (res[4].equals("F")) {%> selected> <%} else {%> > <%}%> Hembra </option>
-                        <option value="M" <%if (res[4].equals("M")) {%> selected> <%} else {%> > <%}%> Macho </option>
+                        <option value="F" <%if (res[4].equals("F")) {%> selected <%}%> > Hembra </option>
+                        <option value="M" <%if (res[4].equals("M")) {%> selected <%}%> > Macho </option>
                     </select>
 
-                    <input type="text" name="color" <% if (res[5] == null) {%> placeholder="Correo electronico">
+                    <input type="text" name="color" <% if (res[5] == null) {%> placeholder="Color">
                     <%} else {%> value="<%=res[5]%>">
                     <%}%>
                     
-                    <div class="word">Dueño:</div> 
+                    <div class="word">Dueño:</div>
+                    <select name="r_ownr">
+                        <%for (Owner owner : ownrs) {
+                        %>          
+                        <option value="<%=owner.getIne()%>" <%if (owner.getIne().equals(res[6])) {%> selected <%}%> > <%=owner.getName()%> </option>
+                        <%}%>
+                    </select>
                     
-                    <input type="text" name="other_notes" <% if (res[7] == null) {%> placeholder="Correo electronico">
+                    <input type="text" name="other_notes" <% if (res[7] == null) {%> placeholder="Notas">
                     <%} else {%> value="<%=res[7]%>">
                     <%}%>
 

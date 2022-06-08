@@ -5,8 +5,10 @@
 package controler.petServlets;
 
 import controler.ownerServlets.OwnerSeIn;
+import data.OwnerDAO;
 import data.PetDAO;
 import model.Pet;
+import model.Owner;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
@@ -19,7 +21,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Pet;
+
 
 /**
  *
@@ -34,9 +36,13 @@ public class PetUp extends HttpServlet{
     protected void doGet(HttpServletRequest rq, HttpServletResponse rp) throws IOException {
         PetDAO dao = new PetDAO();
         ArrayList<Pet> pet;
+        
+        OwnerDAO r_owner = new OwnerDAO();
+        ArrayList<Owner> ownr;
         try {
             int id = Integer.parseInt(rq.getParameter("id"));
             pet = dao.select();
+            ownr = r_owner.select();
             String[] result = {"", "", "", "", "", "", "", "", ""};
 
             PrintWriter out = rp.getWriter();
@@ -58,6 +64,7 @@ public class PetUp extends HttpServlet{
                     result[8] = String.valueOf(id);
                     
                     rq.getSession().setAttribute("result", result);
+                    rq.getSession().setAttribute("owner", ownr);
                     rp.sendRedirect("/Veterinaria/views/petSearch.jsp");
                 } else {
                     out.println("<html>");
