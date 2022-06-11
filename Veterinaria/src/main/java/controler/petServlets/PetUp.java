@@ -4,7 +4,6 @@
 
 package controler.petServlets;
 
-import controler.ownerServlets.OwnerSeIn;
 import data.OwnerDAO;
 import data.PetDAO;
 import model.Pet;
@@ -78,7 +77,7 @@ public class PetUp extends HttpServlet{
                 }
             }
         } catch (ParseException ex) {
-            Logger.getLogger(OwnerSeIn.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PetUp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -4,7 +4,6 @@
 
 package controler.petServlets;
 
-import controler.ownerServlets.OwnerDel;
 import data.PetDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -56,7 +55,7 @@ public class PetDel extends HttpServlet{
                 out.println("</html>");
             }
         } catch (ParseException ex) {
-            Logger.getLogger(OwnerDel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PetDel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -2,10 +2,10 @@
  *  
  */
 
-package controler.petServlets;
-
-import data.OwnerDAO;
-import model.Owner;
+package controler.productServlets;
+        
+import data.CategoryDAO;
+import model.Category;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -20,20 +20,20 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Alarcon Olga
  */
-@WebServlet(name = "PetR_Owner", urlPatterns = {"/PetR_Owner"})
+@WebServlet(name = "ProductR_Category", urlPatterns = {"/ProductR_Category"})
 
-public class PetR_Owner extends HttpServlet {
+public class ProductR_Category extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest rq, HttpServletResponse rp) throws IOException {
-        OwnerDAO dao = new OwnerDAO();
-        ArrayList<Owner> ownr;
+        CategoryDAO dao = new CategoryDAO();
+        ArrayList<Category> cat;
         try {
-            ownr = dao.select();
-            rq.getSession().setAttribute("owner", ownr);
-            rp.sendRedirect("/Veterinaria/views/petIn.jsp");
+            cat = dao.select();
+            rq.getSession().setAttribute("cat", cat);
+            rp.sendRedirect("/Veterinaria/views/productIn.jsp");
         } catch (ParseException ex) {
-            Logger.getLogger(PetR_Owner.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProductR_Category.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

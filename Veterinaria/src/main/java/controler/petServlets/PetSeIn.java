@@ -75,7 +75,7 @@ public class PetSeIn extends HttpServlet {
                 out.println("<head>");
                 out.println("<script>");
                 out.println("alert('Mascota agregada con éxito.');");
-                out.println("window.location='/Veterinaria/views/petSearch.jsp'");
+                out.println("window.location='/Veterinaria/PetR_Owner'");
                 out.println("</script>");
                 out.println("</head>");
                 out.println("</html>");
@@ -84,7 +84,7 @@ public class PetSeIn extends HttpServlet {
                 out.println("<head>");
                 out.println("<script>");
                 out.println("alert('Error al agregar mascota!.');");
-                out.println("window.location='/Veterinaria/views/petSearch.jsp'");
+                out.println("window.location='/Veterinaria/PetR_Owner'");
                 out.println("</script>");
                 out.println("</head>");
                 out.println("</html>");
