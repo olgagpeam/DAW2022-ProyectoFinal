@@ -1,7 +1,6 @@
 /*
  *  
  */
-
 package data;
 
 import model.Category;
@@ -21,13 +20,13 @@ public class CategoryDAO {
     public static final String insertSQL = "INSERT INTO category (cat) VALUES (?)";
     public static final String updateSQL = "UPDATE category SET cat = ? WHERE id_cat = ?";
     public static final String deleteSQL = "DELETE FROM category WHERE id_cat = ? ";
-    
+
     public ArrayList<Category> select() throws ParseException {
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
         Category cat = null;
-         
+
         ArrayList<Category> lista = new ArrayList<>();
         try {
             conn = DBConnection.getConnection();
@@ -49,10 +48,10 @@ public class CategoryDAO {
         return lista;
     }
 
-    public void insert(Category cat) throws ParseException {
+    public boolean insert(Category cat) throws ParseException {
         Connection conn = null;
         PreparedStatement st = null;
-        
+
         try {
             conn = DBConnection.getConnection();
             st = conn.prepareStatement(insertSQL);
@@ -61,13 +60,14 @@ public class CategoryDAO {
             st.executeUpdate();
 
             DBConnection.close(st, conn);
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        return false;
     }
 
-    public void update(Category cat, int id) {
+    public boolean update(Category cat, int id) {
         Connection conn = null;
         PreparedStatement st = null;
 
@@ -76,32 +76,41 @@ public class CategoryDAO {
             st = conn.prepareStatement(updateSQL);
 
             st.setString(1, cat.getCategory());
-            
+
             st.setInt(2, id);
 
             st.executeUpdate();
 
             DBConnection.close(st, conn);
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        return false;
     }
 
-    public void delete(int id) {
+    public int delete(int id) throws ParseException {
         Connection conn = null;
         PreparedStatement st = null;
 
         try {
-            conn = DBConnection.getConnection();
-            st = conn.prepareStatement(deleteSQL);
-            st.setInt(1, id);
+            ArrayList<Category> cat = select();
+            for (Category search : cat) {
+                if (search.getId() == id) {
+                    conn = DBConnection.getConnection();
+                    st = conn.prepareStatement(deleteSQL);
+                    st.setInt(1, id);
 
-            st.executeUpdate();
+                    st.executeUpdate();
 
-            DBConnection.close(st, conn);
+                    DBConnection.close(st, conn);
+                    return 0;
+                }
+            }
+            return 1;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return 2;
     }
 }

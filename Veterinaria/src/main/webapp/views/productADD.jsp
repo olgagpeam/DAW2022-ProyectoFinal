@@ -73,7 +73,7 @@
                 <div class="word">Cantidad actual:</div>
                 <input type="text" name="inStock" value="<%=(res[3].equals("-1")) ? 0 : res[3]%>" readonly>
                 <div class="word">Cantidad a agregar:</div>
-                <input type="text" name="upStock">
+                <input type="number" min="0" step="1" name="upStock">
                 <button type="submit" name="up" value="add">Agregar</button>
             </form>
             <%} else {%>

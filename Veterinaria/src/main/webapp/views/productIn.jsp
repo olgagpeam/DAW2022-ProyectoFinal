@@ -41,12 +41,12 @@
                     </li>
                     <button class="dropdown-btn">Categorias<i class="fa fa-caret-down"></i></button>
                     <div class="dropdown-container">
-                        <li><a href="/Veterinaria/ProductSeIn">Listado</a></li>
-                        <li><a href="/Veterinaria/ProductR_Category">Registrar categoria</a></li>
-                        <li><a href="/Veterinaria/views/productUp.jsp">Editar categoria</a></li>
-                        <li><a href="/Veterinaria/views/productDel.jsp">Eliminar categoria</a></li>
+                        <li><a href="/Veterinaria/CategorySeIn">Listado</a></li>
+                        <li><a href="/Veterinaria/views/categoryIn.jsp">Registrar categoria</a></li>
+                        <li><a href="/Veterinaria/views/categoryUp.jsp">Editar categoria</a></li>
+                        <li><a href="/Veterinaria/views/categoryDel.jsp">Eliminar categoria</a></li>
                     </div>
-                    <li><a href="/Veterinaria/productUpdateSe">Historial de movimientos</a></li>
+                    <li><a href="/Veterinaria/ProductUpdateSe">Historial de movimientos</a></li>
                 </ul>
             </div>
             <div id="form">

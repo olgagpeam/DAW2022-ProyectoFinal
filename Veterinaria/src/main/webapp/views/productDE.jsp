@@ -75,7 +75,7 @@
                 <div class="word">Min. en inventario recomendado:</div>
                 <input type="text" name="minStock" value="<%=res[4]%>" readonly>
                 <div class="word">Cantidad a quitar:</div>
-                <input type="text" name="upStock">
+                <input type="number" min="0" step="1" name="upStock">
                 <button type="submit" name="up" value="del">Quitar</button>
             </form>
             <%} else {%>

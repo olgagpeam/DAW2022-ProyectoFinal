@@ -31,7 +31,7 @@ public class ProductSeIn extends HttpServlet {
     protected void doGet(HttpServletRequest rq, HttpServletResponse rp) throws IOException {
         ProductDAO dao = new ProductDAO();
         ArrayList<Product> prod;
-        
+
         CategoryDAO r_cat = new CategoryDAO();
         ArrayList<Category> cat;
         try {
@@ -65,27 +65,21 @@ public class ProductSeIn extends HttpServlet {
 
             ProductDAO dao = new ProductDAO();
             Product prod = new Product(id, name, description, inStock, minStock, priceIn, priceOut, r_category, createdAt, updatedAt, isActive);
-            
+
             PrintWriter out = rp.getWriter();
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<script>");
             if (dao.insert(prod)) {
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<script>");
-                out.println("alert('Producto resgitrado con éxito.');");
-                out.println("window.location='/Veterinaria/ProductR_Category'");
-                out.println("</script>");
-                out.println("</head>");
-                out.println("</html>");
+                out.println("alert('Producto registrado con éxito.');");
             } else {
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<script>");
                 out.println("alert('Error al registrar producto!');");
-                out.println("window.location='/Veterinaria/ProductR_Category'");
-                out.println("</script>");
-                out.println("</head>");
-                out.println("</html>");
             }
+            out.println("window.location='/Veterinaria/ProductR_Category'");
+            out.println("</script>");
+            out.println("</head>");
+            out.println("</html>");
+
         } catch (ParseException ex) {
             Logger.getLogger(ProductSeIn.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -84,7 +84,6 @@ create table pets (
 	r_ownr varchar(20),
 	other_notes text,
 	constraint pk_pets primary key (id_pet),
-	foreign key (r_sex) references sex (id_sex),
 	foreign key (r_ownr) references owners (ine)
 );
 
@@ -160,19 +159,8 @@ create table prod_updates (
 	r_prod varchar(15),
 	prod_updated_at timestamp,
 	r_user_prod varchar(20),
+	notes_prod text,
 	constraint pk_prod_updates primary key (id_produ),
 	foreign key (r_prod) references products (id_product),
 	foreign key(r_user_prod) references users (id_user)
 );
-
-
-insert into users values ('OLGA', '12345', row('Olga Guadalupe', 'Alarcon', 'Montero'), '1998-03-26', 'Nicolas Blanco', '2281816634', null, 'olgagpeam@gmail.com')
-delete from owners
-select * from owners where ine = 'AAMO'
-select * from pets
-select * from sex
-insert into sex values ('F', 'Hembra'), ('M', 'Macho');
-
-
-	
-	<%if (owner.getIne().equals(res[6])) {%> selected <%}%>

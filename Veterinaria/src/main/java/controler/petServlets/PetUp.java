@@ -1,7 +1,6 @@
 /*
  *  
  */
-
 package controler.petServlets;
 
 import data.OwnerDAO;
@@ -21,21 +20,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  *
  * @author Alarcon Olga
  */
-@WebServlet (name = "PetUp", urlPatterns = {"/PetUp"})
+@WebServlet(name = "PetUp", urlPatterns = {"/PetUp"})
 
-public class PetUp extends HttpServlet{
+public class PetUp extends HttpServlet {
+
     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-    
+
     @Override
     protected void doGet(HttpServletRequest rq, HttpServletResponse rp) throws IOException {
         PetDAO dao = new PetDAO();
         ArrayList<Pet> pet;
-        
+
         OwnerDAO r_owner = new OwnerDAO();
         ArrayList<Owner> ownr;
         try {
@@ -61,7 +60,7 @@ public class PetUp extends HttpServlet{
                     result[6] = pt.getR_owner();
                     result[7] = pt.getOther();
                     result[8] = String.valueOf(id);
-                    
+
                     rq.getSession().setAttribute("result", result);
                     rq.getSession().setAttribute("owner", ownr);
                     rp.sendRedirect("/Veterinaria/views/petSearch.jsp");
@@ -100,27 +99,20 @@ public class PetUp extends HttpServlet{
 
             PetDAO dao = new PetDAO();
             Pet pet = new Pet(name, bdate, specie, race, r_sex, color, r_ownr, other_notes);
-            
+
             PrintWriter out = rp.getWriter();
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<script>");
             if (dao.update(pet, id)) {
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<script>");
                 out.println("alert('Mascota actualizada con éxito.');");
-                out.println("window.location='/Veterinaria/views/petUp.jsp'");
-                out.println("</script>");
-                out.println("</head>");
-                out.println("</html>");
             } else {
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<script>");
                 out.println("alert('Error al actualizar mascota!');");
-                out.println("window.location='/Veterinaria/views/petUp.jsp'");
-                out.println("</script>");
-                out.println("</head>");
-                out.println("</html>");
             }
+            out.println("window.location='/Veterinaria/views/petUp.jsp'");
+            out.println("</script>");
+            out.println("</head>");
+            out.println("</html>");
         } catch (ParseException ex) {
             Logger.getLogger(PetUp.class.getName()).log(Level.SEVERE, null, ex);
         }

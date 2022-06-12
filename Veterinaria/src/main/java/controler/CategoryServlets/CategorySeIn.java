@@ -6,6 +6,7 @@ package controler.CategoryServlets;
 import data.CategoryDAO;
 import model.Category;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -30,7 +31,7 @@ public class CategorySeIn extends HttpServlet {
         try {
             cat = dao.select();
             rq.getSession().setAttribute("cat", cat);
-            rp.sendRedirect("/Veterinaria/views/CategoryConsulta.jsp");
+            rp.sendRedirect("/Veterinaria/views/categorySe.jsp");
         } catch (ParseException ex) {
             Logger.getLogger(CategorySeIn.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -44,7 +45,20 @@ public class CategorySeIn extends HttpServlet {
 
             CategoryDAO dao = new CategoryDAO();
             Category cat = new Category(nom);
-            dao.insert(cat);
+
+            PrintWriter out = rp.getWriter();
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<script>");
+            if (dao.insert(cat)) {
+                out.println("alert('Categoria registrada con éxito.');");
+            } else {
+                out.println("alert('Error al registrar categoria!');");
+            }
+            out.println("window.location='/Veterinaria/views/categoryIn.jsp'");
+            out.println("</script>");
+            out.println("</head>");
+            out.println("</html>");
         } catch (ParseException ex) {
             Logger.getLogger(CategorySeIn.class.getName()).log(Level.SEVERE, null, ex);
         }
