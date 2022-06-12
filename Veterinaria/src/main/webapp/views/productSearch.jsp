@@ -45,7 +45,7 @@
                         <li><a href="/Veterinaria/views/categoryUp.jsp">Editar categoria</a></li>
                         <li><a href="/Veterinaria/views/categoryDel.jsp">Eliminar categoria</a></li>
                     </div>
-                    <li><a href="/Veterinaria/ProductUpdateSe">Historial de movimientos</a></li>
+                    <li><a href="/Veterinaria/ProdUpdateSeIn">Historial de movimientos</a></li>
                 </ul>
             </div>
             <div id="form">
@@ -58,8 +58,8 @@
 
                     if (cat != null && cat.size() > 0) {
                 %>
-                <form method="post" action="/Veterinaria/ProductUp">
-                    <input type="text" id="id" name="id" placeholder="Codigo de barras" required value="<%=res[0]%>">
+                <form id="formIN" method="post" action="/Veterinaria/ProductUpdate">
+                    <input type="text" id="id" name="id" placeholder="Codigo de barras" value="<%=res[0]%>" readonly>
                     <input type="text" id="name" name="name" <% if (res[1] == null) {%> placeholder="Nombre producto">
                     <%} else {%> value="<%=res[1]%>">
                     <%}%>
@@ -91,7 +91,7 @@
                         <option value="no" <%if (res[8].equals("no")) {%> selected <%}%> > Inactivo </option>
                     </select>
 
-                    <button id="button" type="submit" name="up" value="editar">Editar</button>
+                    <button type="submit" id="button" name="up" value="edit">Editar</button>
                 </form>
                 <%} else {%>
                 <div style="color: #def0fb; font-size: 125%">Primero se necesita registrar las categorias
@@ -99,6 +99,6 @@
                 </div>
             </div>
             <script src="/Veterinaria/js/menu.js"></script>
-            <script src="/Veterinaria/js/floatsVerif.js"></script>F
+            <script src="/Veterinaria/js/floatsVerif.js"></script>
     </body>
 </html>

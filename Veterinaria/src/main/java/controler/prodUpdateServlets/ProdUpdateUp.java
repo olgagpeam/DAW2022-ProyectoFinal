@@ -6,7 +6,6 @@ package controler.prodUpdateServlets;
 import data.ProdUpdateDAO;
 import model.ProdUpdate;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.Timestamp;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,9 +28,10 @@ public class ProdUpdateUp extends HttpServlet {
         //Date date = new Date();
         //Timestamp updatedAt = new Timestamp(date.getTime());
         String r_user = rq.getParameter("r_user");
-
+        String notes = rq.getParameter("notes");
+        
         ProdUpdateDAO dao = new ProdUpdateDAO();
-        ProdUpdate prodUp = new ProdUpdate(r_id, updatedAt, r_user);
+        ProdUpdate prodUp = new ProdUpdate(r_id, updatedAt, r_user, notes);
         dao.update(prodUp, id);
     }
 }

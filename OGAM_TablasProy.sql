@@ -161,6 +161,6 @@ create table prod_updates (
 	r_user_prod varchar(20),
 	notes_prod text,
 	constraint pk_prod_updates primary key (id_produ),
-	foreign key (r_prod) references products (id_product),
+	--foreign key (r_prod) references products (id_product),
 	foreign key(r_user_prod) references users (id_user)
 );

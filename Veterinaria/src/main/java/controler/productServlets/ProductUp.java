@@ -4,6 +4,7 @@
 package controler.productServlets;
 
 import data.CategoryDAO;
+import data.ProdUpdateDAO;
 import data.ProductDAO;
 import model.Category;
 import model.Product;
@@ -18,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.ProdUpdate;
 
 /**
  *
@@ -126,93 +128,77 @@ public class ProductUp extends HttpServlet {
     //Para editar los datos en la base de datos
     @Override
     protected void doPost(HttpServletRequest rq, HttpServletResponse rp) throws IOException {
+        try {
+            String button = rq.getParameter("up");
+            String id = rq.getParameter("id");
+            int inStock = (rq.getParameter("inStock").equals("")) ? 0 : Integer.valueOf(rq.getParameter("inStock"));
+            PrintWriter out = rp.getWriter();
+            result = null;
+            ProdUpdateDAO daoUp = new ProdUpdateDAO();
+            //Apartado de add y del para solo agregar o retirar unidades del stock
+            //el restante es para la edicion de todos los datos
+            if (button.equals("add") || button.equals("del")) {
+                rq.getSession().setAttribute("resDEL", result);
+                rq.getSession().setAttribute("resADD", result);
+                int upStock = (rq.getParameter("upStock").equals("")) ? 0 : Integer.valueOf(rq.getParameter("upStock"));
+                Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
+                ProductDAO dao = new ProductDAO();
 
-        String button = rq.getParameter("up");
-        String id = rq.getParameter("id");
-        int inStock = (rq.getParameter("inStock").equals("")) ? 0 : Integer.valueOf(rq.getParameter("inStock"));
-        PrintWriter out = rp.getWriter();
-        result = null;
-        //Apartado de add y del para solo agregar o retirar unidades del stock
-        //el restante es para la edicion de todos los datos
-        if (button.equals("add") || button.equals("del")) {
-            rq.getSession().setAttribute("resDEL", result);
-            rq.getSession().setAttribute("resADD", result);
-            int upStock = (rq.getParameter("upStock").equals("")) ? 0 : Integer.valueOf(rq.getParameter("upStock"));
-            Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
-            ProductDAO dao = new ProductDAO();
-
-            if (button.equals("add")) {
-                inStock += upStock;
-                Product add = new Product(inStock, updatedAt);
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<script>");
-                if (dao.updateADD(add, id)) {
-                    out.println("alert('Unidades añadidas con éxito.');");
-                } else {
-                    out.println("alert('Error al añadir unidades al producto!');");
-                }
-                out.println("window.location='/Veterinaria/views/productADD.jsp'");
-                out.println("</script>");
-                out.println("</head>");
-                out.println("</html>");
-            } else if (button.equals("del")) {
-                int minStock = (rq.getParameter("minStock").equals("")) ? 0 : Integer.valueOf(rq.getParameter("minStock"));
-                if (inStock - upStock < 0) {
+                if (button.equals("add")) {
+                    inStock += upStock;
+                    Product add = new Product(inStock, updatedAt);
+                    ProdUpdate prodUp = new ProdUpdate(id, updatedAt, "USER", "Se añadieron " + upStock + " unidades al inventario");
                     out.println("<html>");
                     out.println("<head>");
                     out.println("<script>");
-                    out.println("alert('No puede retirar mas unidades de las disponibles en inventario!');");
-                    out.println("window.location='/Veterinaria/views/productDE.jsp'");
-                    out.println("</script>");
-                    out.println("</head>");
-                    out.println("</html>");
-                } else {
-                    inStock -= upStock;
-                    Product del = new Product(inStock, updatedAt);
-
-                    out.println("<html>");
-                    out.println("<head>");
-                    out.println("<script>");
-                    if (dao.updateADD(del, id)) {
-                        if (inStock <= minStock) {
-                            out.println("alert('Unidades retiradas con éxito. Se recomienda resurtir inventario. Unidades minimas!');");
-                        } else {
-                            out.println("alert('Unidades retiradas con éxito.');");
-                        }
+                    if (dao.updateADD(add, id)) {
+                        out.println("alert('Unidades añadidas con éxito.');");
+                        daoUp.insert(prodUp);
                     } else {
-                        out.println("alert('Error al retirar unidades del producto!');");
+                        out.println("alert('Error al añadir unidades al producto!');");
                     }
-                    out.println("window.location='/Veterinaria/views/productDE.jsp'");
+                    out.println("window.location='/Veterinaria/views/productADD.jsp'");
                     out.println("</script>");
                     out.println("</head>");
                     out.println("</html>");
+                } else if (button.equals("del")) {
+                    int minStock = (rq.getParameter("minStock").equals("")) ? 0 : Integer.valueOf(rq.getParameter("minStock"));
+                    if (inStock - upStock < 0) {
+                        out.println("<html>");
+                        out.println("<head>");
+                        out.println("<script>");
+                        out.println("alert('No puede retirar mas unidades de las disponibles en inventario!');");
+                        out.println("window.location='/Veterinaria/views/productDE.jsp'");
+                        out.println("</script>");
+                        out.println("</head>");
+                        out.println("</html>");
+                    } else {
+                        inStock -= upStock;
+                        Product del = new Product(inStock, updatedAt);
+                        ProdUpdate prodUp = new ProdUpdate(id, updatedAt, "USER", "Se retiraron " + upStock + " unidades del inventario");
+
+                        out.println("<html>");
+                        out.println("<head>");
+                        out.println("<script>");
+                        if (dao.updateADD(del, id)) {
+                            if (inStock <= minStock) {
+                                daoUp.insert(prodUp);
+                                out.println("alert('Unidades retiradas con éxito. Se recomienda resurtir inventario. Unidades minimas!');");
+                            } else {
+                                out.println("alert('Unidades retiradas con éxito.');");
+                            }
+                        } else {
+                            out.println("alert('Error al retirar unidades del producto!');");
+                        }
+                        out.println("window.location='/Veterinaria/views/productDE.jsp'");
+                        out.println("</script>");
+                        out.println("</head>");
+                        out.println("</html>");
+                    }
                 }
             }
-        } else {
-            String name = rq.getParameter("name");
-            String description = rq.getParameter("description");
-            int minStock = ("".equals(rq.getParameter("minStock"))) ? 0 : Integer.parseInt(rq.getParameter("minStock"));
-            float priceIn = ("".equals(rq.getParameter("priceIn"))) ? -1 : Float.parseFloat(rq.getParameter("priceIn"));
-            float priceOut = ("".equals(rq.getParameter("priceOut"))) ? -1 : Float.parseFloat(rq.getParameter("priceOut"));
-            int r_category = ("".equals(rq.getParameter("r_category"))) ? 0 : Integer.parseInt(rq.getParameter("r_category"));
-            Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
-            boolean isActive = ((rq.getParameter("isActive")).equals("si"));
-            ProductDAO dao = new ProductDAO();
-            Product prod = new Product(name, description, inStock, minStock, priceIn, priceOut, r_category, updatedAt, isActive);
-
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<script>");
-            if (dao.update(prod, id)) {
-                out.println("alert('Producto actualizado con éxito.');");
-            } else {
-                out.println("alert('Error al actualizar producto!');");
-            }
-            out.println("window.location='/Veterinaria/views/productUp.jsp'");
-            out.println("</script>");
-            out.println("</head>");
-            out.println("</html>");
+        } catch (ParseException ex) {
+            Logger.getLogger(ProductUp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

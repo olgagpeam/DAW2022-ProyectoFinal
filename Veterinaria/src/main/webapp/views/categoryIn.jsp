@@ -40,7 +40,7 @@
                         <li><a href="/Veterinaria/views/productUp.jsp">Editar categoria</a></li>
                         <li><a href="/Veterinaria/views/productDel.jsp">Eliminar categoria</a></li>
                     </div>
-                    <li><a href="/Veterinaria/productUpdateSe">Historial de movimientos</a></li>
+                    <li><a href="/Veterinaria/ProdUpdateSeIn">Historial de movimientos</a></li>
                 </ul>
             </div>
             <div id="form">

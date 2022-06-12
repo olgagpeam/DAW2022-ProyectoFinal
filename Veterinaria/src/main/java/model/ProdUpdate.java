@@ -15,21 +15,24 @@ public class ProdUpdate {
     private String r_prod;
     private Timestamp updatedAt;
     private String r_user;
+    private String notes;
 
     public ProdUpdate() {
     }
 
-    public ProdUpdate(int id, String r_prod, Timestamp updatedAt, String r_user) {
+    public ProdUpdate(int id, String r_prod, Timestamp updatedAt, String r_user, String notes) {
         this.id = id;
         this.r_prod = r_prod;
         this.updatedAt = updatedAt;
         this.r_user = r_user;
+        this.notes = notes;
     }
     
-    public ProdUpdate(String r_prod, Timestamp updatedAt, String r_user) {
+    public ProdUpdate(String r_prod, Timestamp updatedAt, String r_user, String notes) {
         this.r_prod = r_prod;
         this.updatedAt = updatedAt;
         this.r_user = r_user;
+        this.notes = notes;
     }
 
     public int getId() {
@@ -47,9 +50,13 @@ public class ProdUpdate {
     public String getR_user() {
         return r_user;
     }
-
+    
     public Timestamp getUpdatedAt() {
         return updatedAt;
+    }
+    
+    public String getNotes() {
+        return notes;
     }
 
     public void setR_prod(String r_prod) {
@@ -63,5 +70,8 @@ public class ProdUpdate {
     public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
-
+    
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 }

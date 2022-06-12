@@ -4,9 +4,11 @@
 package controler.productServlets;
 
 import data.CategoryDAO;
+import data.ProdUpdateDAO;
 import data.ProductDAO;
 import model.Category;
 import model.Product;
+import model.ProdUpdate;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
@@ -65,12 +67,17 @@ public class ProductSeIn extends HttpServlet {
 
             ProductDAO dao = new ProductDAO();
             Product prod = new Product(id, name, description, inStock, minStock, priceIn, priceOut, r_category, createdAt, updatedAt, isActive);
-
+           
+            ProdUpdateDAO daoUp = new ProdUpdateDAO();
+            String r_user = "USER";
+            ProdUpdate prodUp = new ProdUpdate(id, updatedAt, r_user, "Se registró el producto");
+            
             PrintWriter out = rp.getWriter();
             out.println("<html>");
             out.println("<head>");
             out.println("<script>");
             if (dao.insert(prod)) {
+                daoUp.insert(prodUp);
                 out.println("alert('Producto registrado con éxito.');");
             } else {
                 out.println("alert('Error al registrar producto!');");
