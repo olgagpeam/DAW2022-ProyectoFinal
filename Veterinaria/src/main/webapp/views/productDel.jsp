@@ -24,18 +24,24 @@
                     <div class="dropdown-container">
                         <li><a href="/Veterinaria/ProductSeIn">Listado</a></li>
                         <li><a href="/Veterinaria/ProductR_Category">Registrar producto</a></li>
-                        
-                        <li><a href="/Veterinaria/views/productUp.jsp">Añadir unidades</a></li>
-                        <li><a href="/Veterinaria/views/productUp.jsp">Descontar unidades</a></li>
-                        
+                        <br>
+                        <li><a href="/Veterinaria/views/productADD.jsp">Añadir unidades</a></li>
+                        <li><a href="/Veterinaria/views/productDE.jsp">Descontar unidades</a></li>
+                        <br>
                         <li><a href="/Veterinaria/views/productUp.jsp">Editar información</a></li>
-                        
-                        <li><a href="/Veterinaria/views/productUp.jsp">Desactivar producto</a></li>
-                        <li><a href="/Veterinaria/views/productUp.jsp">Ractivar producto</a></li>
-                        
+                        <br>
                         <li><a href="/Veterinaria/views/productDel.jsp" class="active">Eliminar producto</a></li>
                     </div>
-                    <li><a href="/Veterinaria/productUpdateSe">Historial de movimientos</a></li>
+                    <li>
+                    </li>
+                    <button class="dropdown-btn">Categorias<i class="fa fa-caret-down"></i></button>
+                    <div class="dropdown-container">
+                        <li><a href="/Veterinaria/CategorySeIn">Listado</a></li>
+                        <li><a href="/Veterinaria/views/categoryIn.jsp">Registrar categoria</a></li>
+                        <li><a href="/Veterinaria/views/categoryUp.jsp">Editar categoria</a></li>
+                        <li><a href="/Veterinaria/views/categoryDel.jsp">Eliminar categoria</a></li>
+                    </div>
+                    <li><a href="/Veterinaria/ProductUpdateSe">Historial de movimientos</a></li>
                 </ul>
             </div>
             <div id="form">
@@ -44,25 +50,10 @@
                 </div>
                 <form method="post" action="/Veterinaria/ProductDel">
                     <input type="text" name="id" placeholder="Codigo de barras" required>
-                    <button type="submit" name="del" title="eliminar">Eliminar</button>
+                    <button type="submit" name="search" value="eliminar">Eliminar</button>
                 </form>
             </div>
         </div>
-        <script>
-            var dropdown = document.getElementsByClassName("dropdown-btn");
-            var i;
-
-            for (i = 0; i < dropdown.length; i++) {
-                dropdown[i].addEventListener("click", function () {
-                    this.classList.toggle("active");
-                    var dropdownContent = this.nextElementSibling;
-                    if (dropdownContent.style.display === "block") {
-                        dropdownContent.style.display = "none";
-                    } else {
-                        dropdownContent.style.display = "block";
-                    }
-                });
-            }
-        </script>
+        <script src="/Veterinaria/js/menu.js"></script>
     </body>
 </html>

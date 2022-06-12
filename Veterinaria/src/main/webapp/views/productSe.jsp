@@ -31,18 +31,24 @@
                     <div class="dropdown-container">
                         <li><a href="/Veterinaria/ProductSeIn" class="active">Listado</a></li>
                         <li><a href="/Veterinaria/ProductR_Category">Registrar producto</a></li>
-                        
-                        <li><a href="/Veterinaria/views/productUp.jsp">Añadir unidades</a></li>
-                        <li><a href="/Veterinaria/views/productUp.jsp">Descontar unidades</a></li>
-                        
+                        <br>
+                        <li><a href="/Veterinaria/views/productADD.jsp">Añadir unidades</a></li>
+                        <li><a href="/Veterinaria/views/productDE.jsp">Descontar unidades</a></li>
+                        <br>
                         <li><a href="/Veterinaria/views/productUp.jsp">Editar información</a></li>
-                        
-                        <li><a href="/Veterinaria/views/productUp.jsp">Desactivar producto</a></li>
-                        <li><a href="/Veterinaria/views/productUp.jsp">Ractivar producto</a></li>
-                        
+                        <br>
                         <li><a href="/Veterinaria/views/productDel.jsp">Eliminar producto</a></li>
                     </div>
-                    <li><a href="/Veterinaria/productUpdateSe">Historial de movimientos</a></li>
+                    <li>
+                    </li>
+                    <button class="dropdown-btn">Categorias<i class="fa fa-caret-down"></i></button>
+                    <div class="dropdown-container">
+                        <li><a href="/Veterinaria/CategorySeIn">Listado</a></li>
+                        <li><a href="/Veterinaria/views/categoryIn.jsp">Registrar categoria</a></li>
+                        <li><a href="/Veterinaria/views/categoryUp.jsp">Editar categoria</a></li>
+                        <li><a href="/Veterinaria/views/categoryDel.jsp">Eliminar categoria</a></li>
+                    </div>
+                    <li><a href="/Veterinaria/ProductUpdateSe">Historial de movimientos</a></li>
                 </ul>
             </div>
 
@@ -83,8 +89,8 @@
                                         + "<td>" + ((String.valueOf(prod.getId()) == null) ? "" : prod.getId()) + "</td>"
                                         + "<td>" + ((prod.getName() == null) ? "" : prod.getName()) + "</td>"
                                         + "<td>" + ((prod.getDescription() == null) ? "" : prod.getDescription()) + "</td>"
-                                        + "<td>" + ((prod.getInStock() == -1) ? "" : prod.getInStock()) + "</td>"
-                                        + "<td>" + ((prod.getMinStock() == -1) ? "" : prod.getMinStock()) + "</td>"
+                                        + "<td>" + prod.getInStock()+ "</td>"
+                                        + "<td>" + prod.getMinStock()+ "</td>"
                                         + "<td>" + ((prod.getPriceIn() == -1) ? "" : prod.getPriceIn()) + "</td>"
                                         + "<td>" + ((prod.getPriceOut() == -1) ? "" : prod.getPriceOut()) + "</td>"
                                         + "<td>" + ((cat_name == null) ? "" : cat_name) + "</td>"
@@ -101,21 +107,6 @@
                     <%}%>
             </div>
         </div>
-        <script>
-                    var dropdown = document.getElementsByClassName("dropdown-btn");
-            var i;
-
-            for (i = 0; i < dropdown.length; i++) {
-                dropdown[i].addEventListener("click", function () {
-                    this.classList.toggle("active");
-                    var dropdownContent = this.nextElementSibling;
-                    if (dropdownContent.style.display === "block") {
-                        dropdownContent.style.display = "none";
-                    } else {
-                        dropdownContent.style.display = "block";
-                    }
-                });
-            }
-        </script>
+        <script src="/Veterinaria/js/menu.js"></script>
     </body>
 </html>

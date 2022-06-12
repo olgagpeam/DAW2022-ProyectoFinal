@@ -52,11 +52,11 @@ public class ProductSeIn extends HttpServlet {
             String id = rq.getParameter("id");
             String name = rq.getParameter("name");
             String description = rq.getParameter("description");
-            int inStock = ("".equals(rq.getParameter("inStock"))) ? -1 : Integer.parseInt(rq.getParameter("inStock"));
-            int minStock = ("".equals(rq.getParameter("minStock"))) ? -1 : Integer.parseInt(rq.getParameter("minStock"));
+            int inStock = ("".equals(rq.getParameter("inStock"))) ? 0 : Integer.parseInt(rq.getParameter("inStock"));
+            int minStock = ("".equals(rq.getParameter("minStock"))) ? 0 : Integer.parseInt(rq.getParameter("minStock"));
             float priceIn = ("".equals(rq.getParameter("priceIn"))) ? -1 : Float.parseFloat(rq.getParameter("priceIn"));
             float priceOut = ("".equals(rq.getParameter("priceOut"))) ? -1 : Float.parseFloat(rq.getParameter("priceOut"));
-            int r_category = ("".equals(rq.getParameter("r_category"))) ? -1 : Integer.parseInt(rq.getParameter("r_category"));
+            int r_category = ("".equals(rq.getParameter("r_category"))) ? 0 : Integer.parseInt(rq.getParameter("r_category"));
             Timestamp createdAt = new Timestamp(System.currentTimeMillis());
             //Date date = new Date();
             //Timestamp createdAt = new Timestamp(date.getTime());

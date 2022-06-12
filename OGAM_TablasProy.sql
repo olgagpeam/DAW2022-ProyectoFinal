@@ -17,11 +17,11 @@ create table account(
 	constraint pk_account primary key (id_acct)
 );
 
-create table sex (
-	id_sex char(1),
-	sex varchar(10),
-	constraint pk_sex primary key (id_sex)
-);
+--create table sex (
+--	id_sex char(1),
+--	sex varchar(10),
+--	constraint pk_sex primary key (id_sex)
+--);
 
 create table consult (
 	id_consult serial,
@@ -164,3 +164,15 @@ create table prod_updates (
 	foreign key (r_prod) references products (id_product),
 	foreign key(r_user_prod) references users (id_user)
 );
+
+
+insert into users values ('OLGA', '12345', row('Olga Guadalupe', 'Alarcon', 'Montero'), '1998-03-26', 'Nicolas Blanco', '2281816634', null, 'olgagpeam@gmail.com')
+delete from owners
+select * from owners where ine = 'AAMO'
+select * from pets
+select * from sex
+insert into sex values ('F', 'Hembra'), ('M', 'Macho');
+
+
+	
+	<%if (owner.getIne().equals(res[6])) {%> selected <%}%>

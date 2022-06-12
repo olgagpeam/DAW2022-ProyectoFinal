@@ -29,16 +29,22 @@
                     <div class="dropdown-container">
                         <li><a href="/Veterinaria/ProductSeIn">Listado</a></li>
                         <li><a href="/Veterinaria/ProductR_Category" class="active">Registrar producto</a></li>
-                        
+                        <br>
                         <li><a href="/Veterinaria/views/productUp.jsp">Añadir unidades</a></li>
                         <li><a href="/Veterinaria/views/productUp.jsp">Descontar unidades</a></li>
-                        
+                        <br>
                         <li><a href="/Veterinaria/views/productUp.jsp">Editar información</a></li>
-                        
-                        <li><a href="/Veterinaria/views/productUp.jsp">Desactivar producto</a></li>
-                        <li><a href="/Veterinaria/views/productUp.jsp">Ractivar producto</a></li>
-                        
+                        <br>
                         <li><a href="/Veterinaria/views/productDel.jsp">Eliminar producto</a></li>
+                    </div>
+                    <li>
+                    </li>
+                    <button class="dropdown-btn">Categorias<i class="fa fa-caret-down"></i></button>
+                    <div class="dropdown-container">
+                        <li><a href="/Veterinaria/ProductSeIn">Listado</a></li>
+                        <li><a href="/Veterinaria/ProductR_Category">Registrar categoria</a></li>
+                        <li><a href="/Veterinaria/views/productUp.jsp">Editar categoria</a></li>
+                        <li><a href="/Veterinaria/views/productDel.jsp">Eliminar categoria</a></li>
                     </div>
                     <li><a href="/Veterinaria/productUpdateSe">Historial de movimientos</a></li>
                 </ul>
@@ -51,14 +57,14 @@
                     ArrayList<Category> cat = (ArrayList<Category>) session.getAttribute("cat");
                     if (cat != null && cat.size() > 0) {
                 %>
-                <form method="post" action="/Veterinaria/ProductSeIn">
-                    <input type="text" name="id" placeholder="Cordigo de barras" required>
-                    <input type="text" name="name" placeholder="Nombre producto" required>
+                <form id="formIN" method="post" action="/Veterinaria/ProductSeIn">
+                    <input type="text" id="id" name="id" placeholder="Codigo de barras" required>
+                    <input type="text" id="name" name="name" placeholder="Nombre producto" required>
                     <input type="textarea" name="description" placeholder="Descripción">
-                    <input type="text" name="inStock" placeholder="Cantidad en inventario">
-                    <input type="text" name="minStock" placeholder="Cantidad minima">
-                    <input type="text" name="priceIn" placeholder="Precio compra">
-                    <input type="email" name="priceOut" placeholder="Precio venta">
+                    <input type="number" name="inStock" min="0" step="1" title="Solo numeros enteros positivos" placeholder="Cantidad en inventario">
+                    <input type="number" name="minStock"  min="0" step="1" title="Solo numeros enteros positivos" placeholder="Cantidad minima">
+                    <input type="text" id="pC" name="priceIn"  placeholder="Precio compra 00.00">
+                    <input type="text" id="pV" name="priceOut"  placeholder="Precio venta 00.00">
                     <div class='word'>
                         Categoria:
                     </div>
@@ -67,7 +73,7 @@
                         %>          <option class="opt" value="<%=pro.getId()%>"> <%=pro.getCategory()%> </option>
                         <%}%>
                     </select>
-                    <button type="submit" name="add" title="agregar">Agregar</button>
+                    <button type="submit" id="button"  name="add" title="agregar">Agregar</button>
                 </form>
                 <%} else {%>
                 <div style="color: #def0fb; font-size: 125%">Primero se necesita registrar las categorias
@@ -75,22 +81,8 @@
                 </div>
             </div>
         </div>
-        <script>
-            var dropdown = document.getElementsByClassName("dropdown-btn");
-            var i;
-
-            for (i = 0; i < dropdown.length; i++) {
-                dropdown[i].addEventListener("click", function () {
-                    this.classList.toggle("active");
-                    var dropdownContent = this.nextElementSibling;
-                    if (dropdownContent.style.display === "block") {
-                        dropdownContent.style.display = "none";
-                    } else {
-                        dropdownContent.style.display = "block";
-                    }
-                });
-            }
-        </script>
+        <script src="/Veterinaria/js/menu.js"></script>
+        <script src="/Veterinaria/js/floatsVerif.js"></script>
     </body>
 </html>
 

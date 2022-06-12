@@ -19,13 +19,13 @@ public class ProductDAO {
     public static final String selectSQL = "SELECT * FROM products";
     public static final String insertSQL = "INSERT INTO products (id_product, name_prod, description, in_stock, min_stock, price_in, price_out, r_category, created_at, updated_at, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     public static final String updateSQL = "UPDATE products SET name_prod = ?, description = ?, in_stock = ?, min_stock = ?, price_in = ?, price_out = ?, r_category = ?, updated_at = ?, is_active = ? WHERE id_product = ?";
+    public static final String updateADDSQL = "UPDATE products SET in_stock = ?, updated_at = ? WHERE id_product = ?";
     public static final String deleteSQL = "DELETE FROM products WHERE id_product = ? ";
     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
     public String[] selectOnly(String id_search) throws ParseException {
         String[] result = {"", "", "", "", "", "", "", "", "", ""};
-        ArrayList<Product> pro = new ArrayList<>();
-        pro = select();
+        ArrayList<Product> pro = select();
         for (Product rs : pro) {
             if (rs.getId().equals(id_search)) {
                 result[0] = id_search;
@@ -38,11 +38,9 @@ public class ProductDAO {
                 result[7] = String.valueOf(rs.getR_category());
                 result[8] = ((rs.getIsActive()) ? "si" : "no");
                 return result;
-            } else {
-                result[0] = "404NotFound";
-                return result;
             }
         }
+        result[0] = "404NotFound";
         return result;
     }
 
@@ -64,8 +62,8 @@ public class ProductDAO {
                 String description = rs.getString(3);
                 int inStock = rs.getInt(4);
                 int minStock = rs.getInt(5);
-                float priceIn = rs.getInt(6);
-                float priceOut = rs.getInt(7);
+                float priceIn = rs.getFloat(6);
+                float priceOut = rs.getFloat(7);
                 int r_category = rs.getInt(8);
                 Timestamp createdAt = rs.getTimestamp(9);
                 Timestamp updatedAt = rs.getTimestamp(10);
@@ -141,6 +139,28 @@ public class ProductDAO {
         }
     }
 
+    public boolean updateADD(Product prod, String id) {
+        Connection conn = null;
+        PreparedStatement st = null;
+
+        try {
+            conn = DBConnection.getConnection();
+            st = conn.prepareStatement(updateADDSQL);
+
+            st.setInt(1, prod.getInStock());
+            st.setTimestamp(2, prod.getUpdatedAt());
+            st.setString(3, id);
+
+            st.executeUpdate();
+
+            DBConnection.close(st, conn);
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public int delete(String id) throws ParseException {
         Connection conn = null;
         PreparedStatement st = null;
@@ -157,10 +177,9 @@ public class ProductDAO {
 
                     DBConnection.close(st, conn);
                     return 0;
-                } else {
-                    return 1;
                 }
             }
+            return 1;
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -28,18 +28,24 @@
                     <div class="dropdown-container">
                         <li><a href="/Veterinaria/ProductSeIn">Listado</a></li>
                         <li><a href="/Veterinaria/ProductR_Category">Registrar producto</a></li>
-
-                        <li><a href="/Veterinaria/views/productUp.jsp">Añadir unidades</a></li>
-                        <li><a href="/Veterinaria/views/productUp.jsp">Descontar unidades</a></li>
-
+                        <br>
+                        <li><a href="/Veterinaria/views/productADD.jsp">Añadir unidades</a></li>
+                        <li><a href="/Veterinaria/views/productDE.jsp">Descontar unidades</a></li>
+                        <br>
                         <li><a href="/Veterinaria/views/productUp.jsp" class="active">Editar información</a></li>
-
-                        <li><a href="/Veterinaria/views/productUp.jsp">Desactivar producto</a></li>
-                        <li><a href="/Veterinaria/views/productUp.jsp">Ractivar producto</a></li>
-
-                        <li><a href="/Veterinaria/views/productDel.jsp" class="active">Eliminar producto</a></li>
+                        <br>
+                        <li><a href="/Veterinaria/views/productDel.jsp">Eliminar producto</a></li>
                     </div>
-                    <li><a href="/Veterinaria/productUpdateSe">Historial de movimientos</a></li>
+                    <li>
+                    </li>
+                    <button class="dropdown-btn">Categorias<i class="fa fa-caret-down"></i></button>
+                    <div class="dropdown-container">
+                        <li><a href="/Veterinaria/CategorySeIn">Listado</a></li>
+                        <li><a href="/Veterinaria/views/categoryIn.jsp">Registrar categoria</a></li>
+                        <li><a href="/Veterinaria/views/categoryUp.jsp">Editar categoria</a></li>
+                        <li><a href="/Veterinaria/views/categoryDel.jsp">Eliminar categoria</a></li>
+                    </div>
+                    <li><a href="/Veterinaria/ProductUpdateSe">Historial de movimientos</a></li>
                 </ul>
             </div>
             <div id="form">
@@ -49,27 +55,27 @@
                 <%
                     String[] res = (String[]) session.getAttribute("result");
                     ArrayList<Category> cat = (ArrayList<Category>) session.getAttribute("cat");
-                    
+
                     if (cat != null && cat.size() > 0) {
                 %>
                 <form method="post" action="/Veterinaria/ProductUp">
-                    <input type="text" name="id" placeholder="Codigo de barras" required value="<%=res[0]%>">
-                    <input type="text" name="name" <% if (res[1] == null) {%> placeholder="Nombre producto">
+                    <input type="text" id="id" name="id" placeholder="Codigo de barras" required value="<%=res[0]%>">
+                    <input type="text" id="name" name="name" <% if (res[1] == null) {%> placeholder="Nombre producto">
                     <%} else {%> value="<%=res[1]%>">
                     <%}%>
                     <input type="textarea" name="description" <% if (res[2] == null) {%> placeholder="Descripción">
                     <%} else {%> value="<%=res[2]%>">
                     <%}%>
-                    <input type="text" name="inStock" <% if (res[3].equals("-1")) {%> placeholder="Cantidad en inventario">
+                    <input type="number" name="inStock" min="0" step="1" title="Solo numeros enteros positivos" <% if (res[3].equals("0")) {%> placeholder="Cantidad en inventario">
                     <%} else {%> value="<%=res[3]%>">
                     <%}%>
-                    <input type="text" name="minStock" <% if (res[4].equals("-1")) {%> placeholder="Cantidad minima">
+                    <input type="number" name="minStock" min="0" step="1" title="Solo numeros enteros positivos" <% if (res[4].equals("0")) {%> placeholder="Cantidad minima">
                     <%} else {%> value="<%=res[4]%>">
                     <%}%>
-                    <input type="text" name="priceIn" <% if (res[5].equals("-1.0")) {%> placeholder="Precio compra">
+                    <input type="text" id="pC" name="priceIn"<% if (res[5].equals("-1.0")) {%> placeholder="Precio compra 00.00">
                     <%} else {%> value="<%=res[5]%>">
                     <%}%>
-                    <input type="email" name="priceOut" <% if (res[6].equals("-1.0")) {%> placeholder="Precio venta">
+                    <input type="text" id="pV" name="priceOut"<% if (res[6].equals("-1.0")) {%> placeholder="Precio venta 00.00">
                     <%} else {%> value="<%=res[6]%>">
                     <%}%>
                     <div class="word">Categoria:</div>
@@ -85,28 +91,14 @@
                         <option value="no" <%if (res[8].equals("no")) {%> selected <%}%> > Inactivo </option>
                     </select>
 
-                    <button type="submit" name="add" title="agregar">Agregar</button>
+                    <button id="button" type="submit" name="up" value="editar">Editar</button>
                 </form>
                 <%} else {%>
                 <div style="color: #def0fb; font-size: 125%">Primero se necesita registrar las categorias
                     <%}%>
                 </div>
             </div>
-            <script>
-                var dropdown = document.getElementsByClassName("dropdown-btn");
-                var i;
-
-                for (i = 0; i < dropdown.length; i++) {
-                    dropdown[i].addEventListener("click", function () {
-                        this.classList.toggle("active");
-                        var dropdownContent = this.nextElementSibling;
-                        if (dropdownContent.style.display === "block") {
-                            dropdownContent.style.display = "none";
-                        } else {
-                            dropdownContent.style.display = "block";
-                        }
-                    });
-                }
-            </script>
+            <script src="/Veterinaria/js/menu.js"></script>
+            <script src="/Veterinaria/js/floatsVerif.js"></script>F
     </body>
 </html>

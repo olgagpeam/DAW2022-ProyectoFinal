@@ -21,6 +21,11 @@ public class Product {
 
     public Product() {
     }
+    
+    public Product(int inStock, Timestamp updatedAt) {
+        this.inStock = inStock;
+        this.updatedAt = updatedAt;
+    }
 
     public Product(String id, String name, String description, int inStock, int minStock, float priceIn, float priceOut, int r_category, Timestamp createdAt, Timestamp updatedAt, boolean isActive) {
         this.id = id;

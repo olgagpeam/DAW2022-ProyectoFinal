@@ -133,10 +133,9 @@ public class PetDAO {
 
                     DBConnection.close(st, conn);
                     return 0;
-                } else {
-                    return 1;
                 }
             }
+            return 1;
         } catch (SQLException e) {
             e.printStackTrace();
         }
