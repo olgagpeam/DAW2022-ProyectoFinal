@@ -1,16 +1,17 @@
 <%-- 
-    Document   : petUp
-    Created on : Jun 7, 2022, 9:58:56 PM
+    Document   : apptDelS
+    Created on : Jun 12, 2022, 10:33:17 PM
     Author     : olgag
 --%>
+
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.io.*, java.util.*" %>
 <%@ page import="javax.servlet.*, java.text.*" %>
-<%@ page import="model.Owner" %>
+
 <!--DOCTYPE html-->
 <html>
     <head>
-        <title>Editar mascota</title>
+        <title>Eliminar cita</title>
         <meta charset="UTF-8">        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -39,7 +40,7 @@
                     <div class="dropdown-container">
                         <li><a href="/Veterinaria/PetSeIn">Listado</a></li>
                         <li><a href="/Veterinaria/views/petIn.jsp">Agregar</a></li>
-                        <li><a href="/Veterinaria/views/petUp.jsp" class="active">Editar</a></li>
+                        <li><a href="/Veterinaria/views/petUp.jsp">Editar</a></li>
                         <li><a href="/Veterinaria/views/petDel.jsp">Eliminar</a></li>
                     </div>
 
@@ -57,7 +58,7 @@
 
                     <button class="dropdown-btn">Cancelar citas <i class="fa fa-caret-down"></i></button>
                     <div class="dropdown-container">
-                        <li><a href="/Veterinaria/views/apptDelS.jsp">Cita salon</a></li>
+                        <li><a href="/Veterinaria/views/apptDelS.jsp" class="active">Cita salon</a></li>
                         <li><a href="/Veterinaria/views/apptDelC.jsp">Cita consulta</a></li>
                         <li><a href="/Veterinaria/views/apptDelH.jsp">Ingreso Hospitalario</a></li>
                     </div>
@@ -68,16 +69,14 @@
             </div>
             <div id="form">
                 <div class="top">
-                    Editar información mascota
+                    Eliminar cita Salon
                 </div>
-                <form method="get" action="/Veterinaria/PetUp">
-                    <input type="text" name="id" placeholder="PetID" required>
-                    <button type="submit" name="search" title="buscar">Editar</button>
+                <form method="post" action="/Veterinaria/ApptSalonDel">
+                    <input type="text" name="id" placeholder="ID cita" required>
+                    <button type="submit" name="del" title="eliminar">Eliminar</button>
                 </form>
             </div>
         </div>
         <script src="/Veterinaria/js/menu.js"></script>
     </body>
 </html>
-
-

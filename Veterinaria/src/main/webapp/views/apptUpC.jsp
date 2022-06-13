@@ -1,16 +1,15 @@
 <%-- 
-    Document   : petUp
-    Created on : Jun 7, 2022, 9:58:56 PM
+    Document   : apptUpC
+    Created on : Jun 13, 2022, 11:36:02 AM
     Author     : olgag
 --%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.io.*, java.util.*" %>
 <%@ page import="javax.servlet.*, java.text.*" %>
-<%@ page import="model.Owner" %>
 <!--DOCTYPE html-->
-<html>
+<html lang="es">
     <head>
-        <title>Editar mascota</title>
+        <title>Editar cita Consulta</title>
         <meta charset="UTF-8">        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -23,7 +22,7 @@
     <body>
         <div id="container">
             <div id="left">
-                <ul>
+               <ul>
                     <button class="dropdown-btn">Dueños
                         <i class="fa fa-caret-down"></i>
                     </button>
@@ -39,7 +38,7 @@
                     <div class="dropdown-container">
                         <li><a href="/Veterinaria/PetSeIn">Listado</a></li>
                         <li><a href="/Veterinaria/views/petIn.jsp">Agregar</a></li>
-                        <li><a href="/Veterinaria/views/petUp.jsp" class="active">Editar</a></li>
+                        <li><a href="/Veterinaria/views/petUp.jsp">Editar</a></li>
                         <li><a href="/Veterinaria/views/petDel.jsp">Eliminar</a></li>
                     </div>
 
@@ -51,7 +50,7 @@
                     <button class="dropdown-btn">Editar citas<i class="fa fa-caret-down"></i></button>
                     <div class="dropdown-container">
                         <li><a href="/Veterinaria/views/apptUpS.jsp">Cita salon</a></li>
-                        <li><a href="/Veterinaria/views/apptUpC.jsp">Cita consulta</a></li>
+                        <li><a href="/Veterinaria/views/apptUpC.jsp" class="active">Cita consulta</a></li>
                         <li><a href="/Veterinaria/views/apptUpH.jsp">Ingreso Hospitalario</a></li>
                     </div>
 
@@ -68,10 +67,10 @@
             </div>
             <div id="form">
                 <div class="top">
-                    Editar información mascota
+                    Editar cita Consulta
                 </div>
-                <form method="get" action="/Veterinaria/PetUp">
-                    <input type="text" name="id" placeholder="PetID" required>
+                <form method="get" action="/Veterinaria/ApptConsultUp">
+                    <input type="text" name="id" placeholder="ID Cita Consulta" required>
                     <button type="submit" name="search" title="buscar">Editar</button>
                 </form>
             </div>

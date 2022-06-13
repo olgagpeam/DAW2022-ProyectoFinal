@@ -11,4 +11,12 @@
         <servlet-name>OwnerSeIn</servlet-name>
         <url-pattern>/OwnerSeIn</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ApptSe</servlet-name>
+        <servlet-class>controler.apptConsultServlets.ApptSe</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ApptSe</servlet-name>
+        <url-pattern>/ApptSe</url-pattern>
+    </servlet-mapping>
 </web-app>

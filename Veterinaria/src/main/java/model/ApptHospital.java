@@ -20,12 +20,12 @@ public class ApptHospital {
     private char r_sector;
     private String note;
     
-    private String illness, procedures, medicaments;
+    private String illness, procedures, med;
 
     public ApptHospital() {
     }
 
-    public ApptHospital(int id, String r_user, String r_owner, int r_pet, String addr, Date dateAppt, Time inHour, char r_sector, String note, String illness, String procedures, String medicaments) {
+    public ApptHospital(int id, String r_user, String r_owner, int r_pet, String addr, Date dateAppt, Time inHour, char r_sector, String note, String illness, String procedures, String med) {
         this.id = id;
         this.r_user = r_user;
         this.r_owner = r_owner;
@@ -37,10 +37,10 @@ public class ApptHospital {
         this.note = note;
         this.illness = illness;
         this.procedures = procedures;
-        this.medicaments = medicaments;
+        this.med = med;
     }
     
-    public ApptHospital(String r_user, String r_owner, int r_pet, String addr, Date dateAppt, Time inHour, char r_sector, String note, String illness, String procedures, String medicaments) {
+    public ApptHospital(String r_user, String r_owner, int r_pet, String addr, Date dateAppt, Time inHour, char r_sector, String note, String illness, String procedures, String med) {
         this.r_user = r_user;
         this.r_owner = r_owner;
         this.r_pet = r_pet;
@@ -51,7 +51,17 @@ public class ApptHospital {
         this.note = note;
         this.illness = illness;
         this.procedures = procedures;
-        this.medicaments = medicaments;
+        this.med = med;
+    }
+    public ApptHospital(String r_user, String addr, Date dateAppt, Time inHour, String note, String illness, String procedures, String med) {
+        this.r_user = r_user;
+        this.addr = addr;
+        this.dateAppt = dateAppt;
+        this.inHour = inHour;
+        this.note = note;
+        this.illness = illness;
+        this.procedures = procedures;
+        this.med = med;
     }
 
     public int getId() {
@@ -98,8 +108,8 @@ public class ApptHospital {
         return procedures;
     }
 
-    public String getMedicaments() {
-        return medicaments;
+    public String getMed() {
+        return med;
     }
 
     public void setId(int id) {
@@ -146,8 +156,8 @@ public class ApptHospital {
         this.procedures = procedures;
     }
 
-    public void setMedicaments(String medicaments) {
-        this.medicaments = medicaments;
+    public void setMed(String med) {
+        this.med = med;
     }
     
 }

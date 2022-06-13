@@ -1,7 +1,6 @@
 /*
  *  
  */
-
 package data;
 
 import model.User;
@@ -17,17 +16,18 @@ import java.util.ArrayList;
 public class UserDAO {
 //  select    insert    update      delete
 
-    public static final String selectSQL = "SELECT * FROM pets";
+    public static final String selectSQL = "SELECT * FROM users";
     public static final String insertSQL = "INSERT INTO users (id_user, pwd, name_usr, bdate_usr, addr_usr, cel_usr, tel_usr, email_usr, r_acct) VALUES (?, ?, ROW(?, ?, ?), ?, ?, ?, ?, ?, ?)";
     public static final String updateSQL = "UPDATE users SET pwd = ?, name_usr = (?, ?, ?), bdate_usr = ?, addr_usr = ?, cel_usr = ?, tel_usr = ?, email_usr = ?, r_acct = ? WHERE id_usr = ?";
     public static final String deleteSQL = "DELETE FROM users WHERE id_usr = ? ";
-    SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
     public ArrayList<User> select() throws ParseException {
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
         User usr = null;
-         
+
         ArrayList<User> lista = new ArrayList<>();
         try {
             conn = DBConnection.getConnection();
@@ -38,11 +38,18 @@ public class UserDAO {
                 String id = rs.getString(1);
                 String pwd = rs.getString(2);
                 String name = rs.getString(3);
-                String name_full [] = name.split(",", 3);
-                name = name_full[0];
-                String lname1 = name_full[1];
-                String lname2 = name_full[2];
-                Date bdate = new Date(df.parse(rs.getString(4)).getTime());
+                String lname2 = null;
+                String lname1 = null;
+                if (name != null) {
+                    String name_full[] = name.split(",", 3);
+                    name = name_full[0].substring(1);
+                    lname1 = name_full[1];
+                    lname2 = name_full[2].substring(0, name_full.length-2);
+                }
+                Date bdate = null;
+                if (rs.getString(4) != null) {
+                    bdate = new Date(df.parse(rs.getString(4)).getTime());
+                }
                 String addr = rs.getString(5);
                 String tel = rs.getString(6);
                 String cel = rs.getString(7);
@@ -63,7 +70,7 @@ public class UserDAO {
     public void insert(User usr) throws ParseException {
         Connection conn = null;
         PreparedStatement st = null;
-        
+
         try {
             conn = DBConnection.getConnection();
             st = conn.prepareStatement(insertSQL);
@@ -106,7 +113,7 @@ public class UserDAO {
             st.setString(8, usr.getCel());
             st.setString(9, usr.getEmail());
             st.setString(10, usr.getR_acct());
-            
+
             st.setString(11, id);
 
             st.executeUpdate();

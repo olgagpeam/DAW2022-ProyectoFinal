@@ -32,13 +32,13 @@ public class PetSeIn extends HttpServlet {
     protected void doGet(HttpServletRequest rq, HttpServletResponse rp) throws IOException {
         PetDAO dao = new PetDAO();
         ArrayList<Pet> pet;
-        
+
         OwnerDAO r_owner = new OwnerDAO();
         ArrayList<Owner> ownr;
         try {
             pet = dao.select();
             ownr = r_owner.select();
-            
+
             rq.getSession().setAttribute("pet", pet);
             rq.getSession().setAttribute("owner", ownr);
             rp.sendRedirect("/Veterinaria/views/petSe.jsp");
@@ -52,11 +52,11 @@ public class PetSeIn extends HttpServlet {
     protected void doPost(HttpServletRequest rq, HttpServletResponse rp) throws IOException {
         try {
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            
+
             String name = rq.getParameter("name");
             Date bdate = null;
-            if (!rq.getParameter("bdate").equals("")){
-               bdate = new Date(df.parse(rq.getParameter("bdate")).getTime());
+            if (!rq.getParameter("bdate").equals("")) {
+                bdate = new Date(df.parse(rq.getParameter("bdate")).getTime());
             }
             String specie = rq.getParameter("specie");
             String race = rq.getParameter("race");
@@ -68,27 +68,20 @@ public class PetSeIn extends HttpServlet {
 
             PetDAO dao = new PetDAO();
             Pet pet = new Pet(name, bdate, specie, race, r_sex, color, r_ownr, other_notes);
-            
+
             PrintWriter out = rp.getWriter();
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<script>");
             if (dao.insert(pet)) {
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<script>");
                 out.println("alert('Mascota agregada con éxito.');");
-                out.println("window.location='/Veterinaria/PetR_Owner'");
-                out.println("</script>");
-                out.println("</head>");
-                out.println("</html>");
             } else {
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<script>");
                 out.println("alert('Error al agregar mascota!.');");
-                out.println("window.location='/Veterinaria/PetR_Owner'");
-                out.println("</script>");
-                out.println("</head>");
-                out.println("</html>");
             }
+            out.println("window.location='/Veterinaria/PetR_Owner'");
+            out.println("</script>");
+            out.println("</head>");
+            out.println("</html>");
         } catch (ParseException ex) {
             Logger.getLogger(PetSeIn.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -8,7 +8,7 @@
 <%@ page import="java.io.*, java.util.*" %>
 <%@ page import="javax.servlet.*, java.text.*" %>
 <%@ page import="model.Pet" %>
-<%@page import="model.Owner" %>
+<%@ page import="model.Owner" %>
 
 <!--DOCTYPE html-->
 <html>
@@ -24,10 +24,9 @@
         <style type="text/css"></style>
     </head>
     <body>
-        
         <div id="container">
             <div id="left">
-                <ul>
+               <ul>
                     <button class="dropdown-btn">Dueños
                         <i class="fa fa-caret-down"></i>
                     </button>
@@ -47,27 +46,30 @@
                         <li><a href="/Veterinaria/views/petDel.jsp">Eliminar</a></li>
                     </div>
 
-                    <li><a href="/Veterinaria/ApptSeIn">Citas</a></li>
-                    <li><a href="/Veterinaria/views/apptInS.jsp">Agendar cita salon</a></li>
-                    <li><a href="/Veterinaria/views/apptInC.jsp">Agendar consulta</a></li>
-                    <li><a href="/Veterinaria/views/apptInH.jsp">Internar</a></li>
+                    <li><a href="/Veterinaria/ApptSe">Citas</a></li>
+                    <li><a href="/Veterinaria/ApptSalonR" >Agendar cita salon</a></li>
+                    <li><a href="/Veterinaria/ApptConsR">Agendar consulta</a></li>
+                    <li><a href="/Veterinaria/ApptHospR">Internar</a></li>
 
                     <button class="dropdown-btn">Editar citas<i class="fa fa-caret-down"></i></button>
                     <div class="dropdown-container">
-                        <li><a href="/Veterinaria/apptUpS.jsp">Cita salon</a></li>
+                        <li><a href="/Veterinaria/views/apptUpS.jsp">Cita salon</a></li>
                         <li><a href="/Veterinaria/views/apptUpC.jsp">Cita consulta</a></li>
                         <li><a href="/Veterinaria/views/apptUpH.jsp">Ingreso Hospitalario</a></li>
                     </div>
 
                     <button class="dropdown-btn">Cancelar citas <i class="fa fa-caret-down"></i></button>
                     <div class="dropdown-container">
-                        <li><a href="/Veterinaria/apptDelS.jsp">Cita salon</a></li>
+                        <li><a href="/Veterinaria/views/apptDelS.jsp">Cita salon</a></li>
                         <li><a href="/Veterinaria/views/apptDelC.jsp">Cita consulta</a></li>
                         <li><a href="/Veterinaria/views/apptDelH.jsp">Ingreso Hospitalario</a></li>
                     </div>
+                    <br>
+                    <br>
+                    <button class="drop-login">Cerrar sesión</button>
                 </ul>
             </div>
-
+            
             <div id="right">
                 <div class="top">
                     Listado de mascotas

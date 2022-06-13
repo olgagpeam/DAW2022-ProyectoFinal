@@ -54,6 +54,16 @@ public class ApptSalon {
         this.outHour = outHour;
         this.products = products;
     }
+    public ApptSalon(String r_user, String addr, Date dateAppt, Time inHour, String note, int r_service, Time outHour, String products) {
+        this.r_user = r_user;
+        this.addr = addr;
+        this.dateAppt = dateAppt;
+        this.inHour = inHour;
+        this.note = note;
+        this.r_service = r_service;
+        this.outHour = outHour;
+        this.products = products;
+    }
     
     public int getId() {
         return id;

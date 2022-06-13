@@ -21,13 +21,13 @@ public class ApptConsult {
     private char r_sector;
     private String note;
     
-    private int r_consult;
+    private String r_consult;
     private String addrRef, diagnosis, procedures, med;
 
     public ApptConsult() {
     }
 
-    public ApptConsult(int id, String r_user, String r_owner, int r_pet, String addr, Date dateAppt, Time inHour, char r_sector, String note, int r_consult, String addrRef, String diagnosis, String procedures, String med) {
+    public ApptConsult(int id, String r_user, String r_owner, int r_pet, String addr, Date dateAppt, Time inHour, char r_sector, String note, String r_consult, String addrRef, String diagnosis, String procedures, String med) {
         this.id = id;
         this.r_user = r_user;
         this.r_owner = r_owner;
@@ -44,7 +44,7 @@ public class ApptConsult {
         this.med = med;
     }
     
-    public ApptConsult(String r_user, String r_owner, int r_pet, String addr, Date dateAppt, Time inHour, char r_sector, String note, int r_consult, String addrRef, String diagnosis, String procedures, String med) {
+    public ApptConsult(String r_user, String r_owner, int r_pet, String addr, Date dateAppt, Time inHour, char r_sector, String note, String r_consult, String addrRef, String diagnosis, String procedures, String med) {
         this.r_user = r_user;
         this.r_owner = r_owner;
         this.r_pet = r_pet;
@@ -52,6 +52,18 @@ public class ApptConsult {
         this.dateAppt = dateAppt;
         this.inHour = inHour;
         this.r_sector = r_sector;
+        this.note = note;
+        this.r_consult = r_consult;
+        this.addrRef = addrRef;
+        this.diagnosis = diagnosis;
+        this.procedures = procedures;
+        this.med = med;
+    }
+    public ApptConsult(String r_user, String addr, Date dateAppt, Time inHour, String note, String r_consult, String addrRef, String diagnosis, String procedures, String med) {
+        this.r_user = r_user;
+        this.addr = addr;
+        this.dateAppt = dateAppt;
+        this.inHour = inHour;
         this.note = note;
         this.r_consult = r_consult;
         this.addrRef = addrRef;
@@ -96,7 +108,7 @@ public class ApptConsult {
         return note;
     }
 
-    public int getR_consult() {
+    public String getR_consult() {
         return r_consult;
     }
 
@@ -152,7 +164,7 @@ public class ApptConsult {
         this.note = note;
     }
 
-    public void setR_consult(int r_consult) {
+    public void setR_consult(String r_consult) {
         this.r_consult = r_consult;
     }
 

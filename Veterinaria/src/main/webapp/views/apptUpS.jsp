@@ -1,16 +1,16 @@
 <%-- 
-    Document   : petUp
-    Created on : Jun 7, 2022, 9:58:56 PM
+    Document   : apptUpS
+    Created on : Jun 13, 2022, 11:36:37 AM
     Author     : olgag
 --%>
+
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.io.*, java.util.*" %>
 <%@ page import="javax.servlet.*, java.text.*" %>
-<%@ page import="model.Owner" %>
 <!--DOCTYPE html-->
-<html>
+<html lang="es">
     <head>
-        <title>Editar mascota</title>
+        <title>Editar cita Salon</title>
         <meta charset="UTF-8">        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -23,7 +23,7 @@
     <body>
         <div id="container">
             <div id="left">
-                <ul>
+               <ul>
                     <button class="dropdown-btn">Dueños
                         <i class="fa fa-caret-down"></i>
                     </button>
@@ -39,12 +39,12 @@
                     <div class="dropdown-container">
                         <li><a href="/Veterinaria/PetSeIn">Listado</a></li>
                         <li><a href="/Veterinaria/views/petIn.jsp">Agregar</a></li>
-                        <li><a href="/Veterinaria/views/petUp.jsp" class="active">Editar</a></li>
+                        <li><a href="/Veterinaria/views/petUp.jsp">Editar</a></li>
                         <li><a href="/Veterinaria/views/petDel.jsp">Eliminar</a></li>
                     </div>
 
                     <li><a href="/Veterinaria/ApptSe">Citas</a></li>
-                    <li><a href="/Veterinaria/ApptSalonR" >Agendar cita salon</a></li>
+                    <li><a href="/Veterinaria/ApptSalonR">Agendar cita salon</a></li>
                     <li><a href="/Veterinaria/ApptConsR">Agendar consulta</a></li>
                     <li><a href="/Veterinaria/ApptHospR">Internar</a></li>
 
@@ -52,7 +52,7 @@
                     <div class="dropdown-container">
                         <li><a href="/Veterinaria/views/apptUpS.jsp">Cita salon</a></li>
                         <li><a href="/Veterinaria/views/apptUpC.jsp">Cita consulta</a></li>
-                        <li><a href="/Veterinaria/views/apptUpH.jsp">Ingreso Hospitalario</a></li>
+                        <li><a href="/Veterinaria/views/apptUpH.jsp" class="active">Ingreso Hospitalario</a></li>
                     </div>
 
                     <button class="dropdown-btn">Cancelar citas <i class="fa fa-caret-down"></i></button>
@@ -68,10 +68,10 @@
             </div>
             <div id="form">
                 <div class="top">
-                    Editar información mascota
+                    Editar cita Salon
                 </div>
-                <form method="get" action="/Veterinaria/PetUp">
-                    <input type="text" name="id" placeholder="PetID" required>
+                <form method="get" action="/Veterinaria/ApptSalonUp">
+                    <input type="text" name="id" placeholder="ID Cita Consulta" required>
                     <button type="submit" name="search" title="buscar">Editar</button>
                 </form>
             </div>

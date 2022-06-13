@@ -11,11 +11,11 @@ create type full_name as (
 --);
 
 --Catalogos
-create table account(
-	id_acct varchar(3),
-	type_acct varchar(50),
-	constraint pk_account primary key (id_acct)
-);
+--create table account(
+--	id_acct varchar(3),
+--	type_acct varchar(50),
+--	constraint pk_account primary key (id_acct)
+--);
 
 --create table sex (
 --	id_sex char(1),
@@ -23,11 +23,11 @@ create table account(
 --	constraint pk_sex primary key (id_sex)
 --);
 
-create table consult (
-	id_consult serial,
-	consult varchar(20),
-	constraint pk_consult primary key (id_consult)
-);
+--create table consult (
+--	id_consult serial,
+--	consult varchar(20),
+--	constraint pk_consult primary key (id_consult)
+--);
 
 create table service (
 	id_service serial,
@@ -35,11 +35,11 @@ create table service (
 	constraint pk_service primary key (id_service)
 );
 
-create table sector (
-	id_sector char(1),
-	sector varchar(20),
-	constraint pk_sector primary key (id_sector)
-);
+--create table sector (
+--	id_sector char(1),
+--	sector varchar(20),
+--	constraint pk_sector primary key (id_sector)
+--);
 
 create table category (
 	id_cat serial,
@@ -58,8 +58,8 @@ create table users (
 	tel_usr varchar(13),
 	email_usr varchar(100),
 	r_acct varchar(3),
-	constraint pk_usuarios primary key (id_user),
-	foreign key (r_acct) references account (id_acct)
+	constraint pk_usuarios primary key (id_user)--,
+	--foreign key (r_acct) references account (id_acct) on delete cascade
 );
 
 create table owners (
@@ -84,7 +84,7 @@ create table pets (
 	r_ownr varchar(20),
 	other_notes text,
 	constraint pk_pets primary key (id_pet),
-	foreign key (r_ownr) references owners (ine)
+	foreign key (r_ownr) references owners (ine) on delete cascade
 );
 
 create table appointments (
@@ -98,20 +98,19 @@ create table appointments (
 	r_sector char(1),
 	notes text,
 	constraint pk_appointments primary key (id_appt),
-	foreign key (r_user) references users (id_user),
-	foreign key (r_owner) references owners (ine),
-	foreign key (r_pet) references pets (id_pet),
-	foreign key (r_sector) references sector (id_sector)
+	foreign key (r_user) references users (id_user) on delete cascade,
+	foreign key (r_owner) references owners (ine) on delete cascade,
+	foreign key (r_pet) references pets (id_pet) on delete cascade--,
+	--foreign key (r_sector) references sector (id_sector) on delete cascade
 );
 
 create table appts_consult (
-	r_consult int,
+	r_consult varchar(15),
 	addr_ref text,
 	diagnosis text,
 	procedures text,
-	medicaments text,
-	foreign key (r_consult) references consult (id_consult)
-
+	medicaments text--,
+	--foreign key (r_consult) references consult (id_consult) on delete cascade
 ) inherits (appointments);
 
 create table appts_hospital (
@@ -124,7 +123,7 @@ create table appts_salon (
 	r_service int,
 	out_hour time,
 	products text,
-	foreign key (r_service) references service (id_service)
+	foreign key (r_service) references service (id_service) on delete cascade
 ) inherits (appointments);
 
 create table med_updates (
@@ -134,8 +133,7 @@ create table med_updates (
 	r_user_med varchar(20),
 	updates text,
 	constraint pk_med_updates primary key (id_medu),
-	foreign key (r_id) references appointments (id_appt),
-	foreign	key (r_user_med) references users (id_user)
+	foreign key (r_id) references appointments (id_appt) on delete cascade--,
 );
 
 create table products (
@@ -151,7 +149,7 @@ create table products (
 	updated_at timestamp,
 	is_active boolean,
 	constraint pk_products primary key (id_product),
-	foreign key (r_category) references category (id_cat)
+	foreign key (r_category) references category (id_cat) on delete cascade
 );
 
 create table prod_updates (
@@ -162,5 +160,5 @@ create table prod_updates (
 	notes_prod text,
 	constraint pk_prod_updates primary key (id_produ),
 	--foreign key (r_prod) references products (id_product),
-	foreign key(r_user_prod) references users (id_user)
+	foreign key(r_user_prod) references users (id_user) on delete cascade
 );

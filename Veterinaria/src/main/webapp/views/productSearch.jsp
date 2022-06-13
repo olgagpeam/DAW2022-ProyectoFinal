@@ -46,6 +46,9 @@
                         <li><a href="/Veterinaria/views/categoryDel.jsp">Eliminar categoria</a></li>
                     </div>
                     <li><a href="/Veterinaria/ProdUpdateSeIn">Historial de movimientos</a></li>
+                    <br>
+                    <br>
+                    <button class="drop-login">Cerrar sesión</button>
                 </ul>
             </div>
             <div id="form">
