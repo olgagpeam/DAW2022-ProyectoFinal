@@ -64,6 +64,8 @@
                         <li><a href="/Veterinaria/views/apptDelH.jsp">Ingreso Hospitalario</a></li>
                     </div>
                     <br>
+                    <li><a href="/Veterinaria/MedUpdateSeIn">Historial medico</a></li>
+                    <br>
                     <br>
                     <button class="drop-login">Cerrar sesión</button>
                 </ul>

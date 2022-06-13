@@ -4,6 +4,7 @@
 package controler.apptConsultServlets;
 
 import data.ApptConsultDAO;
+import data.MedUpdateDAO;
 import data.OwnerDAO;
 import data.PetDAO;
 import data.UserDAO;
@@ -16,11 +17,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.MedUpdate;
 import model.Owner;
 import model.Pet;
 import model.User;
@@ -131,11 +134,16 @@ public class ApptConsultUp extends HttpServlet {
             ApptConsultDAO dao = new ApptConsultDAO();
             ApptConsult apptC = new ApptConsult(r_user, addr, dateAppt, inHour, note, r_consult, addrRef, diagnosis, procedures, med);
             
+            Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
+            MedUpdateDAO daoUp = new MedUpdateDAO();
+            MedUpdate medUp = new MedUpdate(id, updatedAt, r_user, "Observaciones:" + note);
+            
             PrintWriter out = rp.getWriter();
             out.println("<html>");
             out.println("<head>");
             out.println("<script>");
             if (dao.update(apptC, id)) {
+                daoUp.update(medUp, id);
                 out.println("alert('Cita actualizada con éxito.');");
             } else {
                 out.println("alert('Error al actualizar Cita!');");

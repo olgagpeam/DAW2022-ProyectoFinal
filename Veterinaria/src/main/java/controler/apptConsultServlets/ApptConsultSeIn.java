@@ -4,11 +4,13 @@
 package controler.apptConsultServlets;
 
 import data.ApptConsultDAO;
+import data.MedUpdateDAO;
 import model.ApptConsult;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.MedUpdate;
 
 /**
  *
@@ -46,14 +49,14 @@ public class ApptConsultSeIn extends HttpServlet {
         try {
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             SimpleDateFormat tdf = new SimpleDateFormat("hh:mm:ss");
-            
+
             String r_user = rq.getParameter("r_user");
             String pet = rq.getParameter("r_pet");
             int r_pet = Integer.parseInt(pet.substring(0, pet.indexOf(".")));
-            String r_owner = pet.substring(pet.indexOf(".")+1, pet.length());
+            String r_owner = pet.substring(pet.indexOf(".") + 1, pet.length());
             String addr = rq.getParameter("addr");
             Date dateAppt = new Date(df.parse(rq.getParameter("dateAppt")).getTime());
-            String hh = rq.getParameter("hh")+":"+ rq.getParameter("mm") +":00";
+            String hh = rq.getParameter("hh") + ":" + rq.getParameter("mm") + ":00";
             Time inHour = new Time(tdf.parse(hh).getTime());
             char r_sector = 'C';
             String note = rq.getParameter("note");
@@ -63,7 +66,7 @@ public class ApptConsultSeIn extends HttpServlet {
             String diagnosis = rq.getParameter("diagnosis");
             String procedures = rq.getParameter("procedures");
             String med = rq.getParameter("med");
-
+            
             ApptConsultDAO dao = new ApptConsultDAO();
             ApptConsult apptC = new ApptConsult(r_user, r_owner, r_pet, addr, dateAppt, inHour, r_sector, note, r_consult, addrRef, diagnosis, procedures, med);
             

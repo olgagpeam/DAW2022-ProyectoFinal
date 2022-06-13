@@ -6,7 +6,6 @@ package controler.medUpdateServlets;
 import data.MedUpdateDAO;
 import model.MedUpdate;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ public class MedUpdateSeIn extends HttpServlet {
         try {
             medUp = dao.select();
             rq.getSession().setAttribute("medUp", medUp);
-            rp.sendRedirect("/Veterinaria/views/MedUpdateConsulta.jsp");
+            rp.sendRedirect("/Veterinaria/views/medUpSe.jsp");
         } catch (ParseException ex) {
             Logger.getLogger(MedUpdateSeIn.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -1,16 +1,17 @@
 <%-- 
-    Document   : petUp
-    Created on : Jun 7, 2022, 9:58:56 PM
+    Document   : medUpSe
+    Created on : Jun 13, 2022, 4:47:08 PM
     Author     : olgag
 --%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page import="java.io.*, java.util.*" %>
 <%@ page import="javax.servlet.*, java.text.*" %>
-<%@ page import="model.Owner" %>
+<%@ page import="model.MedUpdate" %>
+
 <!--DOCTYPE html-->
 <html>
     <head>
-        <title>Editar mascota</title>
+        <title>Historial medico</title>
         <meta charset="UTF-8">        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -28,7 +29,7 @@
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-container">
-                        <li><a href="/Veterinaria/OwnerSeIn">Listado</a></li>
+                        <li><a href="/Veterinaria/OwnerSeIn" class="active">Listado</a></li>
                         <li><a href="/Veterinaria/views/ownerIn.jsp">Agregar</a></li>
                         <li><a href="/Veterinaria/views/ownerUp.jsp">Editar</a></li>
                         <li><a href="/Veterinaria/views/ownerDel.jsp">Eliminar</a></li>
@@ -39,7 +40,7 @@
                     <div class="dropdown-container">
                         <li><a href="/Veterinaria/PetSeIn">Listado</a></li>
                         <li><a href="/Veterinaria/views/petIn.jsp">Agregar</a></li>
-                        <li><a href="/Veterinaria/views/petUp.jsp" class="active">Editar</a></li>
+                        <li><a href="/Veterinaria/views/petUp.jsp">Editar</a></li>
                         <li><a href="/Veterinaria/views/petDel.jsp">Eliminar</a></li>
                     </div>
 
@@ -62,24 +63,49 @@
                         <li><a href="/Veterinaria/views/apptDelH.jsp">Ingreso Hospitalario</a></li>
                     </div>
                     <br>
-                    <li><a href="/Veterinaria/MedUpdateSeIn">Historial medico</a></li>
+                    <li><a href="/Veterinaria/MedUpdateSeIn" class="active">Historial medico</a></li>
                     <br>
                     <br>
                     <button class="drop-login">Cerrar sesión</button>
                 </ul>
             </div>
-            <div id="form">
+
+            <div id="right">
                 <div class="top">
-                    Editar información mascota
+                    Historial medico
                 </div>
-                <form method="get" action="/Veterinaria/PetUp">
-                    <input type="text" name="id" placeholder="PetID" required>
-                    <button type="submit" name="search" title="buscar">Editar</button>
-                </form>
+                <%
+                    ArrayList<MedUpdate> meds = (ArrayList<MedUpdate>) session.getAttribute("medUp");
+                    if (meds != null && meds.size() > 0) {%>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>ID Cita</th>
+                            <th>Fecha de actualización</th>
+                            <th>Responsable</th>
+                            <th>Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            for (MedUpdate md : meds) {
+                                out.print("<tr>"
+                                        + "<td>" + md.getId() + "</td>"
+                                        + "<td>" + md.getR_id() + "</td>"
+                                        + "<td>" + ((md.getUpdatedAt() == null) ? "" : md.getUpdatedAt()) + "</td>"
+                                        + "<td>" + ((md.getR_user() == null) ? "" : md.getR_user()) + "</td>"
+                                        + "<td>" + ((md.getUpdates() == null) ? "" : md.getUpdates()) + "</td>"
+                                        + "</tr>");
+                            }
+                        %>
+                    </tbody>
+                </table>
+                <%} else {%>
+                <p>No hay información para mostrar
+                    <%}%>
             </div>
         </div>
         <script src="/Veterinaria/js/menu.js"></script>
     </body>
 </html>
-
-

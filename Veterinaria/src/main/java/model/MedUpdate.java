@@ -41,7 +41,7 @@ public class MedUpdate {
         return r_id;
     }
 
-    public Timestamp getUpdated_at() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
@@ -61,7 +61,7 @@ public class MedUpdate {
         this.r_id = r_id;
     }
 
-    public void setUpdated_at(Timestamp updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 
