@@ -6,12 +6,10 @@ package controler.apptConsultServlets;
 
 import data.OwnerDAO;
 import data.PetDAO;
-import data.ConsultDAO;
 import data.UserDAO;
 import model.Owner;
 import model.Pet;
 import model.User;
-import model.Consult;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;

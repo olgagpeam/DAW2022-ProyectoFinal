@@ -14,7 +14,6 @@
 <%@ page import="model.User" %>
 <%@ page import="model.Owner"%>
 <%@ page import="model.Pet"%>
-<%@page import="model.Service"%>
 <!--DOCTYPE html-->
 <html lang="es">
     <head>
@@ -73,7 +72,7 @@
                     <li><a href="/Veterinaria/MedUpdateSeIn">Historial medico</a></li>
                     <br>
                     <br>
-                    <button class="drop-login">Cerrar sesión</button>
+                    <li><a href="/Veterinaria/views/log.jsp">Cerrar sesión</a></li>
                 </ul>
             </div>
             <div id="form">

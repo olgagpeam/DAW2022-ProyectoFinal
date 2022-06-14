@@ -29,11 +29,11 @@ create type full_name as (
 --	constraint pk_consult primary key (id_consult)
 --);
 
-create table service (
-	id_service serial,
-	service varchar(20),
-	constraint pk_service primary key (id_service)
-);
+--create table service (
+--	id_service serial,
+--	service varchar(20),
+--	constraint pk_service primary key (id_service)
+--);
 
 --create table sector (
 --	id_sector char(1),
@@ -122,8 +122,8 @@ create table appts_hospital (
 create table appts_salon (
 	r_service int,
 	out_hour time,
-	products text,
-	foreign key (r_service) references service (id_service) on delete cascade
+	products text--,
+	--foreign key (r_service) references service (id_service) on delete cascade
 ) inherits (appointments);
 
 create table med_updates (
@@ -132,8 +132,8 @@ create table med_updates (
 	med_updated_at timestamp,
 	r_user_med varchar(20),
 	updates text,
-	constraint pk_med_updates primary key (id_medu),
-	foreign key (r_id) references appointments (id_appt) on delete cascade--,
+	constraint pk_med_updates primary key (id_medu)--,
+	--foreign key (r_id) references appointments (id_appt) on delete cascade
 );
 
 create table products (

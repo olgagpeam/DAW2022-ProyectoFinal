@@ -18,8 +18,8 @@ public class UserDAO {
 
     public static final String selectSQL = "SELECT * FROM users";
     public static final String insertSQL = "INSERT INTO users (id_user, pwd, name_usr, bdate_usr, addr_usr, cel_usr, tel_usr, email_usr, r_acct) VALUES (?, ?, ROW(?, ?, ?), ?, ?, ?, ?, ?, ?)";
-    public static final String updateSQL = "UPDATE users SET pwd = ?, name_usr = (?, ?, ?), bdate_usr = ?, addr_usr = ?, cel_usr = ?, tel_usr = ?, email_usr = ?, r_acct = ? WHERE id_usr = ?";
-    public static final String deleteSQL = "DELETE FROM users WHERE id_usr = ? ";
+    public static final String updateSQL = "UPDATE users SET pwd = ?, name_usr = (?, ?, ?), bdate_usr = ?, addr_usr = ?, cel_usr = ?, tel_usr = ?, email_usr = ?, r_acct = ? WHERE id_user = ?";
+    public static final String deleteSQL = "DELETE FROM users WHERE id_user = ? ";
     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
     public ArrayList<User> select() throws ParseException {
@@ -42,9 +42,9 @@ public class UserDAO {
                 String lname1 = null;
                 if (name != null) {
                     String name_full[] = name.split(",", 3);
-                    name = name_full[0].substring(1);
+                    name = name_full[0];
                     lname1 = name_full[1];
-                    lname2 = name_full[2].substring(0, name_full.length-2);
+                    lname2 = name_full[2];
                 }
                 Date bdate = null;
                 if (rs.getString(4) != null) {
@@ -67,7 +67,7 @@ public class UserDAO {
         return lista;
     }
 
-    public void insert(User usr) throws ParseException {
+    public boolean insert(User usr) throws ParseException {
         Connection conn = null;
         PreparedStatement st = null;
 
@@ -89,13 +89,14 @@ public class UserDAO {
             st.executeUpdate();
 
             DBConnection.close(st, conn);
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        return false;
     }
 
-    public void update(User usr, String id) {
+    public boolean update(User usr, String id) {
         Connection conn = null;
         PreparedStatement st = null;
 
@@ -119,26 +120,35 @@ public class UserDAO {
             st.executeUpdate();
 
             DBConnection.close(st, conn);
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        return false;
     }
 
-    public void delete(String id) {
+    public int delete(String id) throws ParseException {
         Connection conn = null;
         PreparedStatement st = null;
 
         try {
-            conn = DBConnection.getConnection();
-            st = conn.prepareStatement(deleteSQL);
-            st.setString(1, id);
+            ArrayList<User> user = select();
+            for (User search : user) {
+                if (search.getId().equals(id)) {
+                    conn = DBConnection.getConnection();
+                    st = conn.prepareStatement(deleteSQL);
+                    st.setString(1, id);
 
-            st.executeUpdate();
+                    st.executeUpdate();
 
-            DBConnection.close(st, conn);
+                    DBConnection.close(st, conn);
+                    return 0;
+                }
+            }
+            return 1;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return 2;
     }
 }

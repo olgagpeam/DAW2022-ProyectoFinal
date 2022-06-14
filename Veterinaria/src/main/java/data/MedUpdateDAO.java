@@ -1,10 +1,8 @@
 /*
  *  
  */
-
 package data;
 
-import data.DBConnection;
 import model.MedUpdate;
 
 import java.sql.*;
@@ -22,13 +20,13 @@ public class MedUpdateDAO {
     public static final String insertSQL = "INSERT INTO med_updates (r_id, med_updated_at, r_user_med, updates) VALUES (?, ?, ?, ?)";
     public static final String updateSQL = "UPDATE med_updates SET r_id = ?, med_updated_at = ?, r_user_med = ?, updates = ? WHERE id_medu = ?";
     public static final String deleteSQL = "DELETE FROM med_updates WHERE id_medu = ? ";
-    SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+
     public ArrayList<MedUpdate> select() throws ParseException {
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
         MedUpdate med = null;
-         
+
         ArrayList<MedUpdate> lista = new ArrayList<>();
         try {
             conn = DBConnection.getConnection();
@@ -56,12 +54,12 @@ public class MedUpdateDAO {
     public void insert(MedUpdate med) throws ParseException {
         Connection conn = null;
         PreparedStatement st = null;
-        
+
         try {
             conn = DBConnection.getConnection();
             st = conn.prepareStatement(insertSQL);
             st.setInt(1, med.getR_id());
-            st.setTimestamp(2, med.getUpdated_at());
+            st.setTimestamp(2, med.getUpdatedAt());
             st.setString(3, med.getR_user());
             st.setString(4, med.getUpdates());
 
@@ -83,10 +81,10 @@ public class MedUpdateDAO {
             st = conn.prepareStatement(updateSQL);
 
             st.setInt(1, med.getR_id());
-            st.setTimestamp(2, med.getUpdated_at());
+            st.setTimestamp(2, med.getUpdatedAt());
             st.setString(3, med.getR_user());
             st.setString(4, med.getUpdates());
-            
+
             st.setInt(5, id);
 
             st.executeUpdate();
@@ -98,20 +96,28 @@ public class MedUpdateDAO {
 
     }
 
-    public void delete(int id) {
+    public int delete(int id) throws ParseException {
         Connection conn = null;
         PreparedStatement st = null;
-
         try {
-            conn = DBConnection.getConnection();
-            st = conn.prepareStatement(deleteSQL);
-            st.setInt(1, id);
+            ArrayList<MedUpdate> med = select();
+            for (MedUpdate search : med) {
+                if (search.getId() == id) {
+                    conn = DBConnection.getConnection();
+                    st = conn.prepareStatement(deleteSQL);
+                    st.setInt(1, id);
 
-            st.executeUpdate();
+                    st.executeUpdate();
 
-            DBConnection.close(st, conn);
+                    DBConnection.close(st, conn);
+                    return 0;
+                }
+            }
+            return 1;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return 2;
+
     }
 }

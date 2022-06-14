@@ -9,7 +9,6 @@
 <%@ page import="model.User" %>
 <%@ page import="model.Owner"%>
 <%@ page import="model.Pet"%>
-<%@page import="model.Service"%>
 <!--DOCTYPE html-->
 <html lang="es">
     <head>
@@ -68,7 +67,7 @@
                     <li><a href="/Veterinaria/MedUpdateSeIn">Historial medico</a></li>
                     <br>
                     <br>
-                    <button class="drop-login">Cerrar sesión</button>
+                    <li><a href="/Veterinaria/views/log.jsp">Cerrar sesión</a></li>
                 </ul>
             </div>
             <div id="form">
@@ -80,10 +79,9 @@
                     ArrayList<Owner> owner = (ArrayList<Owner>) session.getAttribute("owner");
                     ArrayList<Pet> pet = (ArrayList<Pet>) session.getAttribute("pet");
                     ArrayList<User> user = (ArrayList<User>) session.getAttribute("user");
-                    ArrayList<Service> ser = (ArrayList<Service>) session.getAttribute("serv");
 
                     if ((user != null && user.size() > 0) && (owner != null && owner.size() > 0)
-                            && (pet != null && pet.size() > 0) && (ser != null && ser.size() > 0)) {
+                            && (pet != null && pet.size() > 0)) {
                 %>
                 <form method="post" action="/Veterinaria/ApptSalonUp">
                     <div class="word">ID:  </div> 
@@ -130,10 +128,11 @@
 
                     <div class="word">Servicio: </div> 
                     <select name="r_service">
-                        <%for (Service sr : ser) {
-                        %>          
-                        <option class="opt" value="<%=sr.getId()%>"  <%if (String.valueOf(sr.getId()).equals(res[8])) {%> selected <%}%> > <%=sr.getService()%> </option>
-                        <%}%>
+                        <select name="r_service">
+                        <option class="opt" value="1" <% if ("1".equals(res[8])) {%> selected  <%}%> >Baño</option>
+                        <option class="opt" value="2" <% if ("2".equals(res[8])) {%> selected  <%}%> >Corte</option>
+                        <option class="opt" value="3" <% if ("3".equals(res[8])) {%> selected  <%}%> >Baño y Corte</option>
+                    </select>
                     </select>
                     <%if (res[9] == null) {%>
                     <input type="number" name="hhO" min="0" max="23" step="1" placeholder="Hora">

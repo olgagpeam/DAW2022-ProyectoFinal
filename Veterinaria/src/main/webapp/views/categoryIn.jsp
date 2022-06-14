@@ -3,9 +3,10 @@
     Created on : Jun 10, 2022, 11:24:59 PM
     Author     : olgag
 --%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <html lang="es">
     <head>
-        <title>Registar categoría</title>
+        <title>Registar categorÃ­a</title>
         <meta charset="UTF-8">        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -24,10 +25,10 @@
                         <li><a href="/Veterinaria/ProductSeIn">Listado</a></li>
                         <li><a href="/Veterinaria/ProductR_Category">Registrar producto</a></li>
                         <br>
-                        <li><a href="/Veterinaria/views/productUp.jsp">Añadir unidades</a></li>
+                        <li><a href="/Veterinaria/views/productUp.jsp">AÃ±adir unidades</a></li>
                         <li><a href="/Veterinaria/views/productUp.jsp">Descontar unidades</a></li>
                         <br>
-                        <li><a href="/Veterinaria/views/productUp.jsp">Editar información</a></li>
+                        <li><a href="/Veterinaria/views/productUp.jsp">Editar informaciÃ³n</a></li>
                         <br>
                         <li><a href="/Veterinaria/views/productDel.jsp">Eliminar producto</a></li>
                     </div>
@@ -43,12 +44,12 @@
                     <li><a href="/Veterinaria/ProdUpdateSeIn">Historial de movimientos</a></li>
                     <br>
                     <br>
-                    <button class="drop-login">Cerrar sesión</button>
+                    <li><a href="/Veterinaria/views/log.jsp">Cerrar sesiÃ³n</a></li>
                 </ul>
             </div>
             <div id="form">
                 <div class="top">
-                    Registrar categoría
+                    Registrar categorÃ­a
                 </div>
                 <form id="formIN" method="post" action="/Veterinaria/CategorySeIn">
                     <input type="text" id="name" name="cat" placeholder="Nombre categoria" required>

@@ -23,14 +23,11 @@
                     <div class="top">
                         Bienvenido
                     </div>
-                    <form id="loginForm" method="get" action="/Veterinaria/controler/userServlets/UserLogin">
-                        <input type="text" name="user" placeholder="Usuario" required>
-                        <input type="password" name="password" placeholder="Contraseña" required>
+                    <form id="loginForm" method="get" action="/Veterinaria/UserLogin">
+                        <input type="text" name="id" placeholder="Usuario" required>
+                        <input type="password" name="pwd" placeholder="Contraseña" required>
                         <button type="submit" name="login" title="ingresar">Ingresar</button>
                     </form>
-                    <div class="bottom">
-                        <a href="#">¿Olvidaste tu contraseña?</a>
-                    </div>
                 </div>
                 <div class="back">
                     <a href="index.html">Volver</a>

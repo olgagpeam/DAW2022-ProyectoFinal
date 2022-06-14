@@ -33,11 +33,19 @@ public class UserLogin extends HttpServlet {
             usr = dao.select();
             for (User user : usr) {
                 if (user.getId().equals(id) && user.getPwd().equals(pwd)) {
-                    //rq.getSession().setAttribute("user", usr);
-                    rp.sendRedirect("/Veterinaria/VET.html");
+                    String acct = user.getR_acct();
+                    if ("VET".equals(acct)){
+                        rp.sendRedirect("/Veterinaria/views/VET.jsp");
+                    }
+                    if ("ADM".equals(acct)){
+                        rp.sendRedirect("/Veterinaria/views/ADM.jsp");
+                    }
+                    if ("INV".equals(acct)){
+                        rp.sendRedirect("/Veterinaria/views/INV.jsp");
+                    }
                 } else {
                     PrintWriter out = rp.getWriter();
-                    /*
+
                     out.println("<html>");
                     out.println("<head>");
                     out.println("<script>");
@@ -46,9 +54,6 @@ public class UserLogin extends HttpServlet {
                     out.println("</script>");
                     out.println("</head>");
                     out.println("</html>");
-                     */
-                    //rq.getSession().setAttribute("user", usr);
-                    rp.sendRedirect("/Veterinaria/views/log.jsp");
                 }
             }
 

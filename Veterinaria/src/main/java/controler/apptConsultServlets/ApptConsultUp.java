@@ -136,14 +136,14 @@ public class ApptConsultUp extends HttpServlet {
             
             Timestamp updatedAt = new Timestamp(System.currentTimeMillis());
             MedUpdateDAO daoUp = new MedUpdateDAO();
-            MedUpdate medUp = new MedUpdate(id, updatedAt, r_user, "Observaciones:" + note);
+            MedUpdate medUp = new MedUpdate(id, updatedAt, r_user, ("Observaciones:" + note));
             
             PrintWriter out = rp.getWriter();
             out.println("<html>");
             out.println("<head>");
             out.println("<script>");
             if (dao.update(apptC, id)) {
-                daoUp.update(medUp, id);
+                daoUp.insert(medUp);
                 out.println("alert('Cita actualizada con éxito.');");
             } else {
                 out.println("alert('Error al actualizar Cita!');");

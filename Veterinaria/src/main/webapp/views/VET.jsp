@@ -1,16 +1,14 @@
 <%-- 
-    Document   : apptUpS
-    Created on : Jun 13, 2022, 11:36:37 AM
+    Document   : VET
+    Created on : Jun 13, 2022, 7:44:05 PM
     Author     : olgag
 --%>
-
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ page import="java.io.*, java.util.*" %>
-<%@ page import="javax.servlet.*, java.text.*" %>
+
 <!--DOCTYPE html-->
-<html lang="es">
+<html>
     <head>
-        <title>Editar cita Salon</title>
+        <title>Bienvenido</title>
         <meta charset="UTF-8">        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -23,7 +21,7 @@
     <body>
         <div id="container">
             <div id="left">
-               <ul>
+                <ul>
                     <button class="dropdown-btn">Dueños
                         <i class="fa fa-caret-down"></i>
                     </button>
@@ -52,7 +50,7 @@
                     <div class="dropdown-container">
                         <li><a href="/Veterinaria/views/apptUpS.jsp">Cita salon</a></li>
                         <li><a href="/Veterinaria/views/apptUpC.jsp">Cita consulta</a></li>
-                        <li><a href="/Veterinaria/views/apptUpH.jsp" class="active">Ingreso Hospitalario</a></li>
+                        <li><a href="/Veterinaria/views/apptUpH.jsp">Ingreso Hospitalario</a></li>
                     </div>
 
                     <button class="dropdown-btn">Cancelar citas <i class="fa fa-caret-down"></i></button>
@@ -70,16 +68,10 @@
             </div>
             <div id="form">
                 <div class="top">
-                    Editar cita Salon
+                   Bienvenido Veterinario
                 </div>
-                <form method="get" action="/Veterinaria/ApptSalonUp">
-                    <input type="text" name="id" placeholder="ID Cita Consulta" required>
-                    <button type="submit" name="search" title="buscar">Editar</button>
-                </form>
             </div>
         </div>
         <script src="/Veterinaria/js/menu.js"></script>
     </body>
 </html>
-
-

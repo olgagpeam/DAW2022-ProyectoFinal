@@ -6,12 +6,10 @@ package controler.apptSalonServlets;
 
 import data.OwnerDAO;
 import data.PetDAO;
-import data.ServiceDAO;
 import data.UserDAO;
 import model.Owner;
 import model.Pet;
 import model.User;
-import model.Service;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -40,17 +38,13 @@ public class ApptSalonR extends HttpServlet {
         UserDAO daoU = new UserDAO();
         ArrayList<User> usr;
         
-        ServiceDAO daoS = new ServiceDAO();
-        ArrayList<Service> ser;
         try {
             ownr = daoO.select();
             pt = daoP.select();
             usr = daoU.select();
-            ser = daoS.select();
             rq.getSession().setAttribute("owner", ownr);
             rq.getSession().setAttribute("pet", pt);
             rq.getSession().setAttribute("user", usr);
-            rq.getSession().setAttribute("ser", ser);
             rp.sendRedirect("/Veterinaria/views/apptInS.jsp");
         } catch (ParseException ex) {
             Logger.getLogger(ApptSalonR.class.getName()).log(Level.SEVERE, null, ex);

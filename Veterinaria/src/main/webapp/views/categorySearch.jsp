@@ -47,7 +47,7 @@
                     <li><a href="/Veterinaria/ProdUpdateSeIn">Historial de movimientos</a></li>
                     <br>
                     <br>
-                    <button class="drop-login">Cerrar sesión</button>
+                    <li><a href="/Veterinaria/views/log.jsp">Cerrar sesión</a></li>
                 </ul>
             </div>
             <div id="form">

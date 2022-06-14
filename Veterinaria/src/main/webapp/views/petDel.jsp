@@ -66,7 +66,7 @@
                     <li><a href="/Veterinaria/MedUpdateSeIn">Historial medico</a></li>
                     <br>
                     <br>
-                    <button class="drop-login">Cerrar sesión</button>
+                    <li><a href="/Veterinaria/views/log.jsp">Cerrar sesión</a></li>
                 </ul>
             <div id="form">
                 <div class="top">

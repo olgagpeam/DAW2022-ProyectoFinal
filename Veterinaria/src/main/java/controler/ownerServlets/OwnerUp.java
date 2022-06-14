@@ -66,7 +66,7 @@ public class OwnerUp extends HttpServlet {
                 }
             }
         } catch (ParseException ex) {
-            Logger.getLogger(OwnerSeIn.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OwnerUp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -7,7 +7,6 @@ import data.ApptSalonDAO;
 import data.MedUpdateDAO;
 import data.OwnerDAO;
 import data.PetDAO;
-import data.ServiceDAO;
 import data.UserDAO;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +26,6 @@ import model.ApptSalon;
 import model.MedUpdate;
 import model.Owner;
 import model.Pet;
-import model.Service;
 import model.User;
 
 /**
@@ -55,16 +53,12 @@ public class ApptSalonUp extends HttpServlet {
         UserDAO r_user = new UserDAO();
         ArrayList<User> usr;
 
-        ServiceDAO r_serv = new ServiceDAO();
-        ArrayList<Service> serv;
-
         try {
             int id = Integer.parseInt(rq.getParameter("id"));
             sal = dao.select();
             ownr = r_owner.select();
             pet = r_pet.select();
             usr = r_user.select();
-            serv = r_serv.select();
             String[] apptSRes = {"", "", "", "", "", "", "", "", "", "", ""};
 
             PrintWriter out = rp.getWriter();
@@ -102,7 +96,6 @@ public class ApptSalonUp extends HttpServlet {
                     rq.getSession().setAttribute("owner", ownr);
                     rq.getSession().setAttribute("pet", pet);
                     rq.getSession().setAttribute("user", usr);
-                    rq.getSession().setAttribute("serv", serv);
                     rp.sendRedirect("/Veterinaria/views/apptSearchS.jsp");
                 } else {
                     out.println("<html>");

@@ -33,7 +33,8 @@ public class User {
         this.r_acct = r_acct;
     }
     //Update
-    public User(String name, String lname1, String lname2, Date bdate, String addr, String tel, String cel, String email, String r_acct) {
+    public User( String pwd, String name, String lname1, String lname2, Date bdate, String addr, String tel, String cel, String email, String r_acct) {
+        this.pwd = pwd;
         this.name = name;
         this.lname1 = lname1;
         this.lname2 = lname2;

@@ -4,7 +4,6 @@
 package data;
 
 import model.ProdUpdate;
-
 import java.sql.*;
 import java.text.*;
 import java.util.ArrayList;
@@ -82,7 +81,7 @@ public class ProdUpdateDAO {
             st.setTimestamp(2, prod.getUpdatedAt());
             st.setString(3, prod.getR_user());
             st.setString(4, prod.getNotes());
-            
+
             st.setInt(5, id);
 
             st.executeUpdate();
@@ -94,20 +93,28 @@ public class ProdUpdateDAO {
 
     }
 
-    public void delete(int id) {
+    public int delete(int id) throws ParseException {
         Connection conn = null;
         PreparedStatement st = null;
 
         try {
-            conn = DBConnection.getConnection();
-            st = conn.prepareStatement(deleteSQL);
-            st.setInt(1, id);
+            ArrayList<ProdUpdate> prod = select();
+            for (ProdUpdate search : prod) {
+                if (search.getId() == id) {
+                    conn = DBConnection.getConnection();
+                    st = conn.prepareStatement(deleteSQL);
+                    st.setInt(1, id);
 
-            st.executeUpdate();
+                    st.executeUpdate();
 
-            DBConnection.close(st, conn);
+                    DBConnection.close(st, conn);
+                    return 0;
+                }
+            }
+            return 1;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return 2;
     }
 }
