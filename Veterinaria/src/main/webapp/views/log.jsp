@@ -30,7 +30,7 @@
                     </form>
                 </div>
                 <div class="back">
-                    <a href="index.html">Volver</a>
+                    <a href="/Veterinaria/index.html">Volver</a>
                 </div>
             </div>
         </div>

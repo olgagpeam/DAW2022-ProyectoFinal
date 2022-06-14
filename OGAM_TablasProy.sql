@@ -5,42 +5,6 @@ create type full_name as (
 	lname2 text
 );
 
---create type pet_id as (
---	owner_ine char(4),
---	pet_name text
---);
-
---Catalogos
---create table account(
---	id_acct varchar(3),
---	type_acct varchar(50),
---	constraint pk_account primary key (id_acct)
---);
-
---create table sex (
---	id_sex char(1),
---	sex varchar(10),
---	constraint pk_sex primary key (id_sex)
---);
-
---create table consult (
---	id_consult serial,
---	consult varchar(20),
---	constraint pk_consult primary key (id_consult)
---);
-
---create table service (
---	id_service serial,
---	service varchar(20),
---	constraint pk_service primary key (id_service)
---);
-
---create table sector (
---	id_sector char(1),
---	sector varchar(20),
---	constraint pk_sector primary key (id_sector)
---);
-
 create table category (
 	id_cat serial,
 	cat varchar(50),

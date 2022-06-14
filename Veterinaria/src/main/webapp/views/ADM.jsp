@@ -1,14 +1,13 @@
 <%-- 
-    Document   : ADM
-    Created on : Jun 13, 2022, 7:44:12 PM
+    Document   : INV
+    Created on : Jun 13, 2022, 7:44:22 PM
     Author     : olgag
 --%>
-
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!--DOCTYPE html-->
 <html lang="es">
     <head>
-        <title> Bienvenido </title>
+        <title>Bienvenido </title>
         <meta charset="UTF-8">        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -19,31 +18,26 @@
         <style type="text/css"></style>
     </head>
     <body>
-        <div id="container"> 
+        <div id="container">
             <div id="left">
                 <ul>
-                    <button class="dropdown-btn">Inventario<i class="fa fa-caret-down"></i></button>
+                    <button class="dropdown-btn">Usuarios
+                        <i class="fa fa-caret-down"></i>
+                    </button>
                     <div class="dropdown-container">
-                        <li><a href="/Veterinaria/ProductSeIn">Listado</a></li>
-                        <li><a href="/Veterinaria/ProductR_Category">Registrar producto</a></li>
-                        <br>
-                        <li><a href="/Veterinaria/views/productUp.jsp">Añadir unidades</a></li>
-                        <li><a href="/Veterinaria/views/productUp.jsp">Descontar unidades</a></li>
-                        <br>
-                        <li><a href="/Veterinaria/views/productUp.jsp">Editar información</a></li>
-                        <br>
-                        <li><a href="/Veterinaria/views/productDel.jsp">Eliminar producto</a></li>
+                        <li><a href="/Veterinaria/UserSeIn">Listado</a></li>
+                        <li><a href="/Veterinaria/views/userIn.jsp">Agregar</a></li>
+                        <li><a href="/Veterinaria/views/userUp.jsp">Editar</a></li>
+                        <li><a href="/Veterinaria/views/userDel.jsp">Eliminar</a></li>
                     </div>
-                    <li>
-                    </li>
-                    <button class="dropdown-btn">Categorias<i class="fa fa-caret-down"></i></button>
+                    
+                    <button class="dropdown-btn">Eliminar resgistro de historial
+                        <i class="fa fa-caret-down"></i>
+                    </button>
                     <div class="dropdown-container">
-                        <li><a href="/Veterinaria/ProductSeIn">Listado</a></li>
-                        <li><a href="/Veterinaria/ProductR_Category">Registrar categoria</a></li>
-                        <li><a href="/Veterinaria/views/productUp.jsp">Editar categoria</a></li>
-                        <li><a href="/Veterinaria/views/productDel.jsp">Eliminar categoria</a></li>
+                        <li><a href="/Veterinaria/views/medUpDel.jsp">Medico</a></li>
+                        <li><a href="/Veterinaria/views/prodUpDel.jsp">Inventario</a></li>
                     </div>
-                    <li><a href="/Veterinaria/ProdUpdateSeIn">Historial de movimientos</a></li>
                     <br>
                     <br>
                     <li><a href="/Veterinaria/views/log.jsp">Cerrar sesión</a></li>
@@ -51,11 +45,10 @@
             </div>
             <div id="form">
                 <div class="top">
-                    Bienvenido al Inventario
+                    Bienvenido Administrador 
                 </div>
             </div>
         </div>
         <script src="/Veterinaria/js/menu.js"></script>
     </body>
 </html>
-
