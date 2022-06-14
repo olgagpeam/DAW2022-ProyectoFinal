@@ -126,3 +126,6 @@ create table prod_updates (
 	--foreign key (r_prod) references products (id_product),
 	foreign key(r_user_prod) references users (id_user) on delete cascade
 );
+
+INSERT INTO users VALUES
+('USER', '12345', row('Olga', 'Alarcon', 'Montero'), null, null, null, null, null, 'ADM');
